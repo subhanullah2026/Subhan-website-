@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subhan's Website</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#87ceeb,#fff);
+color:#111;text-align:center;transition:.3s
+}
+#loader{
+position:fixed;inset:0;background:#00008b;color:white;
+display:flex;flex-direction:column;justify-content:center;
+align-items:center;z-index:99999
+}
+.spinner{
+width:65px;height:65px;border:7px solid white;
+border-top-color:transparent;border-radius:50%;
+animation:spin 1s linear infinite
+}
+#loader p{margin-top:20px;color:white;font-size:20px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+nav{
+background:#00008b;padding:14px;position:sticky;top:0;
+z-index:1000
+}
+.navbar{
+max-width:1100px;margin:auto;display:flex;
+align-items:center;justify-content:space-between
+}
+.logo{color:white;font-size:22px;font-weight:bold}
+.navlinks{display:flex;flex-wrap:wrap;justify-content:center}
+.navlinks a{
+color:white;text-decoration:none;padding:7px;
+font-size:13px;font-weight:bold
+}
+.menu{
+display:none;background:white;color:#00008b;
+padding:8px 12px;margin:0
+}
+
+section{padding:60px 15px}
+.hero{
+min-height:88vh;display:flex;justify-content:center;
+align-items:center
+}
+.profile{
+width:180px;height:180px;object-fit:cover;
+border-radius:50%;border:5px solid white;
+box-shadow:0 5px 25px #555;
+animation:float 3s ease-in-out infinite
+}
+@keyframes float{50%{transform:translateY(-12px)}}
+
+h1{font-size:42px;color:#00008b;margin:20px 0}
+h2{font-size:30px;color:#00008b;margin-bottom:20px}
+p{font-size:18px;line-height:1.6}
+.typing{
+font-size:25px;font-weight:bold;color:#00008b;
+min-height:40px
+}
+
+button{
+border:0;border-radius:10px;background:#0000ff;
+color:white;padding:12px 18px;font-size:16px;
+margin:6px;cursor:pointer
+}
+button:active{transform:scale(.95)}
+
+.box,.gamebox,.ticbox,.contact{
+max-width:700px;margin:auto;background:white;
+padding:30px;border-radius:20px;
+box-shadow:0 5px 20px #777
+}
+
+/* SKILLS */
+.skills{
+max-width:700px;margin:auto;background:white;
+padding:30px;border-radius:20px;
+box-shadow:0 5px 20px #777
+}
+.skill{text-align:left;margin:20px 0}
+.skillname{font-weight:bold;margin-bottom:7px}
+.skillbar{
+height:18px;background:#ddd;border-radius:20px;overflow:hidden
+}
+.progress{
+height:100%;width:0;background:#00008b;
+border-radius:20px;transition:2s
+}
+
+/* PROJECTS */
+.projects{
+max-width:1000px;margin:auto;
+display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px
+}
+.card{
+background:white;padding:25px;border-radius:18px;
+box-shadow:0 5px 18px #777;transition:.3s
+}
+.card:hover{transform:translateY(-8px)}
+.icon{font-size:45px;margin-bottom:15px}
+
+/* CLOCK */
+.clockbox{
+max-width:500px;margin:auto;background:#00008b;
+color:white;padding:30px 15px;border-radius:20px;
+box-shadow:0 5px 20px #777
+}
+#clock{font-size:43px;font-weight:bold;letter-spacing:3px}
+#date{font-size:18px;margin-top:12px}
+
+/* CALCULATOR */
+.calculator{
+max-width:350px;margin:auto;background:#222;
+padding:20px;border-radius:20px
+}
+#display{
+width:100%;height:60px;font-size:25px;
+text-align:right;padding:10px;margin-bottom:10px;
+border-radius:8px
+}
+.calcgrid{
+display:grid;grid-template-columns:repeat(4,1fr);gap:7px
+}
+.calcgrid button{margin:0;padding:17px 5px;background:#444}
+.equal{background:green!important}
+.clear{background:red!important}
+
+/* GAME */
+#guess{
+width:80%;padding:14px;font-size:18px;
+text-align:center;border:2px solid #ccc;border-radius:8px
+}
+#gameResult,#ticResult{
+font-weight:bold;color:#00008b;
+min-height:30px;margin-top:12px
+}
+
+/* TIC TAC TOE */
+.board{
+display:grid;grid-template-columns:repeat(3,1fr);
+gap:7px;max-width:330px;margin:20px auto
+}
+.cell{
+height:90px;font-size:40px;background:#eee;
+color:#00008b;border:2px solid #00008b;margin:0
+}
+
+/* CONTACT */
+.contact input,.contact textarea{
+width:100%;padding:14px;margin:8px 0;
+font-size:17px;border:2px solid #ccc;border-radius:8px
+}
+.contact textarea{height:120px;resize:vertical}
+.whatsapp{
+display:inline-block;background:green;color:white;
+padding:14px 22px;border-radius:10px;
+text-decoration:none;margin-top:10px
+}
+#formResult{min-height:25px;font-weight:bold}
+
+/* SOCIAL */
+.social a{
+display:inline-block;margin:6px;padding:12px 18px;
+border-radius:10px;color:white;text-decoration:none;
+background:#00008b
+}
+
+/* CV */
+.cv{
+display:inline-block;background:#111;color:white;
+text-decoration:none;padding:13px 20px;
+border-radius:10px;margin:8px
+}
+
+/* TOAST */
+#toast{
+position:fixed;left:50%;bottom:30px;
+transform:translate(-50%,100px);
+background:#222;color:white;padding:15px 22px;
+border-radius:10px;opacity:0;transition:.4s;
+z-index:5000
+}
+#toast.show{
+opacity:1;transform:translate(-50%,0)
+}
+
+/* TOP */
+#top{
+position:fixed;right:20px;bottom:20px;
+width:55px;height:55px;border-radius:50%;
+background:#00008b;color:white;font-size:25px;
+display:none;z-index:4000
+}
+
+/* FOOTER */
+footer{background:#00008b;color:white;padding:25px}
+footer p{color:white}
+
+/* DARK */
+.dark{background:#111;color:white}
+.dark h1,.dark h2,.dark .typing{color:#66ccff}
+.dark .box,.dark .skills,.dark .card,
+.dark .gamebox,.dark .ticbox,.dark .contact{
+background:#222;color:white
+}
+.dark .skillbar{background:#555}
+.dark .cell{background:#333;color:#66ccff}
+.dark .contact input,.dark .contact textarea{
+background:#333;color:white;border-color:#666
+}
+
+/* MOBILE */
+@media(max-width:700px){
+h1{font-size:32px}
+h2{font-size:26px}
+.menu{display:block}
+.navbar{flex-wrap:wrap}
+.navlinks{display:none;width:100%;flex-direction:column}
+.navlinks.show{display:flex}
+.navlinks a{padding:10px}
+#clock{font-size:32px}
+.hero{min-height:80vh}
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADING -->
+<div id="loader">
+<div class="spinner"></div>
+<p>Loading My Website...</p>
+</div>
+
+<!-- NAVIGATION -->
+<nav>
+<div class="navbar">
+<div class="logo">Subhan</div>
+
+<button class="menu" onclick="menuToggle()">☰ Menu</button>
+
+<div class="navlinks" id="navlinks">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#clockSection">Clock</a>
+<a href="#calculator">Calculator</a>
+<a href="#game">Game</a>
+<a href="#tictactoe">Tic-Tac-Toe</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="hero">
+<div>
+
+<img src="AA.jpg" class="profile" alt="My Photo">
+
+<h1>Welcome to My Website</h1>
+
+<div class="typing" id="typing"></div>
+
+<p>My name is Subhan.</p>
+<p>I am learning Web Development.</p>
+
+<button onclick="welcome()">👋 Click Me</button>
+<button onclick="darkMode()">🌙 Dark Mode</button>
+
+<br>
+
+<a class="cv" href="#" onclick="downloadCV()">
+📄 Download CV
+</a>
+
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<div class="box">
+<h2>👤 About Me</h2>
+<p>
+I am a student and I am learning HTML,
+CSS and JavaScript.
+</p>
+<p>
+My goal is to become a professional Web Developer.
+</p>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+<h2>📊 My Skills</h2>
+
+<div class="skills">
+
+<div class="skill">
+<div class="skillname">HTML - 90%</div>
+<div class="skillbar">
+<div class="progress" data-width="90%"></div>
+</div>
+</div>
+
+<div class="skill">
+<div class="skillname">CSS - 80%</div>
+<div class="skillbar">
+<div class="progress" data-width="80%"></div>
+</div>
+</div>
+
+<div class="skill">
+<div class="skillname">JavaScript - 70%</div>
+<div class="skillbar">
+<div class="progress" data-width="70%"></div>
+</div>
+</div>
+
+<div class="skill">
+<div class="skillname">Web Development - 75%</div>
+<div class="skillbar">
+<div class="progress" data-width="75%"></div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+<h2>🖼️ My Projects</h2>
+
+<div class="projects">
+
+<div class="card">
+<div class="icon">🌐</div>
+<h2>Website</h2>
+<p>My personal website.</p>
+</div>
+
+<div class="card">
+<div class="icon">🧮</div>
+<h2>Calculator</h2>
+<p>Working calculator.</p>
+</div>
+
+<div class="card">
+<div class="icon">🎮</div>
+<h2>Number Game</h2>
+<p>Guess the hidden number.</p>
+</div>
+
+<div class="card">
+<div class="icon">⭕❌</div>
+<h2>Tic-Tac-Toe</h2>
+<p>Two-player game.</p>
+</div>
+
+<div class="card">
+<div class="icon">🕐</div>
+<h2>Live Clock</h2>
+<p>Real-time digital clock.</p>
+</div>
+
+<div class="card">
+<div class="icon">📱</div>
+<h2>Contact</h2>
+<p>WhatsApp contact form.</p>
+</div>
+
+</div>
+</section>
+
+<!-- CLOCK -->
+<section id="clockSection">
+<h2>🕐 Live Digital Clock</h2>
+
+<div class="clockbox">
+<div id="clock">00:00:00</div>
+<div id="date">Loading...</div>
+</div>
+</section>
+
+<!-- CALCULATOR -->
+<section id="calculator">
+<h2>🧮 Calculator</h2>
+
+<div class="calculator">
+
+<input id="display" readonly placeholder="0">
+
+<div class="calcgrid">
+
+<button class="clear" onclick="clearCalc()">C</button>
+<button onclick="delCalc()">⌫</button>
+<button onclick="calcAdd('%')">%</button>
+<button onclick="calcAdd('/')">÷</button>
+
+<button onclick="calcAdd('7')">7</button>
+<button onclick="calcAdd('8')">8</button>
+<button onclick="calcAdd('9')">9</button>
+<button onclick="calcAdd('*')">×</button>
+
+<button onclick="calcAdd('4')">4</button>
+<button onclick="calcAdd('5')">5</button>
+<button onclick="calcAdd('6')">6</button>
+<button onclick="calcAdd('-')">−</button>
+
+<button onclick="calcAdd('1')">1</button>
+<button onclick="calcAdd('2')">2</button>
+<button onclick="calcAdd('3')">3</button>
+<button onclick="calcAdd('+')">+</button>
+
+<button onclick="calcAdd('0')">0</button>
+<button onclick="calcAdd('.')">.</button>
+<button class="equal" onclick="calcResult()">=</button>
+
+</div>
+</div>
+</section>
+
+<!-- NUMBER GAME -->
+<section id="game">
+<h2>🎮 Number Guessing Game</h2>
+
+<div class="gamebox">
+<p>Guess a number between 1 and 100.</p>
+
+<input id="guess"
+type="number"
+min="1"
+max="100"
+placeholder="Enter number">
+
+<br>
+
+<button onclick="guessNumber()">Guess</button>
+<button onclick="newNumberGame()">New Game</button>
+
+<p id="gameResult"></p>
+</div>
+</section>
+
+<!-- TIC TAC TOE -->
+<section id="tictactoe">
+<h2>⭕❌ Tic-Tac-Toe</h2>
+
+<div class="ticbox">
+
+<p id="ticResult">Player X's Turn</p>
+
+<div class="board">
+
+<button class="cell" onclick="play(0)"></button>
+<button class="cell" onclick="play(1)"></button>
+<button class="cell" onclick="play(2)"></button>
+<button class="cell" onclick="play(3)"></button>
+<button class="cell" onclick="play(4)"></button>
+<button class="cell" onclick="play(5)"></button>
+<button class="cell" onclick="play(6)"></button>
+<button class="cell" onclick="play(7)"></button>
+<button class="cell" onclick="play(8)"></button>
+
+</div>
+
+<button onclick="resetTic()">🔄 New Game</button>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<h2>📱 Contact Me</h2>
+
+<div class="contact">
+
+<p>Send me a message on WhatsApp.</p>
+
+<input id="name" type="text" placeholder="Your Name">
+
+<input id="email" type="email" placeholder="Your Email">
+
+<input id="phone" type="tel" placeholder="Your Phone Number">
+
+<textarea id="message"
+placeholder="Write your message..."></textarea>
+
+<button onclick="sendWhatsApp()">
+📲 Send on WhatsApp
+</button>
+
+<p id="formResult"></p>
+
+<a class="whatsapp"
+href="https://wa.me/923226503158"
+target="_blank">
+💬 WhatsApp Me
+</a>
+
+</div>
+</section>
+
+<!-- SOCIAL -->
+<section>
+<h2>🔗 Social Media</h2>
+
+<div class="social">
+
+<a href="#contact">Facebook</a>
+<a href="#contact">YouTube</a>
+<a href="#contact">Instagram</a>
+<a href="#contact">WhatsApp</a>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<p>Subhan's Portfolio © 2026</p>
+<p>Made with HTML, CSS & JavaScript ❤️</p>
+</footer>
+
+<!-- TOAST -->
+<div id="toast">Hello!</div>
+
+<!-- TOP -->
+<button id="top" onclick="goTop()">↑</button>
+
+<script>
+
+/* LOADER */
+window.addEventListener("load",function(){
+
+setTimeout(function(){
+
+document.getElementById("loader").style.display="none";
+
+document.querySelectorAll(".progress").forEach(function(x){
+x.style.width=x.dataset.width;
+});
+
+},1200);
+
+});
+
+/* MOBILE MENU */
+function menuToggle(){
+document.getElementById("navlinks").classList.toggle("show");
+}
+
+/* TYPING */
+var words=[
+"I am a Web Developer.",
+"I am learning JavaScript.",
+"I love Technology.",
+"Welcome to my Website!"
+];
+
+var wi=0;
+var ci=0;
+var deleting=false;
+
+function typing(){
+
+var text=words[wi];
+var el=document.getElementById("typing");
+
+if(!deleting){
+
+el.innerHTML=text.substring(0,ci+1);
+ci++;
+
+if(ci===text.length){
+deleting=true;
+setTimeout(typing,1200);
+return;
+}
+
+}else{
+
+el.innerHTML=text.substring(0,ci-1);
+ci--;
+
+if(ci===0){
+deleting=false;
+wi++;
+if(wi===words.length)wi=0;
+}
+
+}
+
+setTimeout(typing,deleting?50:100);
+}
+
+typing();
+
+/* TOAST */
+function toast(msg){
+
+var t=document.getElementById("toast");
+
+t.innerHTML=msg;
+t.classList.add("show");
+
+setTimeout(function(){
+t.classList.remove("show");
+},2500);
+
+}
+
+/* WELCOME */
+function welcome(){
+toast("👋 Welcome to Subhan's Website!");
+}
+
+/* DARK MODE */
+function darkMode(){
+document.body.classList.toggle("dark");
+toast("🌙 Dark Mode Changed");
+}
+
+/* CLOCK */
+function updateClock(){
+
+var now=new Date();
+
+var h=now.getHours();
+var m=now.getMinutes();
+var s=now.getSeconds();
+
+if(h<10)h="0"+h;
+if(m<10)m="0"+m;
+if(s<10)s="0"+s;
+
+document.getElementById("clock").innerHTML=
+h+":"+m+":"+s;
+
+var days=[
+"Sunday","Monday","Tuesday","Wednesday",
+"Thursday","Friday","Saturday"
+];
+
+var months=[
+"January","February","March","April","May","June",
+"July","August","September","October","November","December"
+];
+
+document.getElementById("date").innerHTML=
+days[now.getDay()]+", "+
+now.getDate()+" "+
+months[now.getMonth()]+" "+
+now.getFullYear();
+
+}
+
+updateClock();
+setInterval(updateClock,1000);
+
+/* CALCULATOR */
+function calcAdd(x){
+document.getElementById("display").value+=x;
+}
+
+function clearCalc(){
+document.getElementById("display").value="";
+}
+
+function delCalc(){
+
+var d=document.getElementById("display");
+d.value=d.value.slice(0,-1);
+
+}
+
+function calcResult(){
+
+var d=document.getElementById("display");
+
+try{
+d.value=Function("return "+d.value)();
+}
+catch(e){
+d.value="Error";
+}
+
+}
+
+/* NUMBER GAME */
+var secret=Math.floor(Math.random()*100)+1;
+var tries=0;
+
+function guessNumber(){
+
+var g=Number(document.getElementById("guess").value);
+var r=document.getElementById("gameResult");
+
+if(g<1||g>100||isNaN(g)){
+r.innerHTML="❌ Enter a number from 1 to 100.";
+return;
+}
+
+tries++;
+
+if(g===secret){
+
+r.innerHTML=
+"🎉 Correct! You won in "+tries+" attempts!";
+toast("🎉 You Won!");
+
+}else if(g<secret){
+
+r.innerHTML="⬆️ Too low!";
+
+}else{
+
+r.innerHTML="⬇️ Too high!";
+
+}
+
+}
+
+function newNumberGame(){
+
+secret=Math.floor(Math.random()*100)+1;
+tries=0;
+
+document.getElementById("guess").value="";
+document.getElementById("gameResult").innerHTML=
+"🎮 New game started!";
+
+}
+
+/* TIC TAC TOE */
+var tic=[
+"","","",
+"","","",
+"","",""
+];
+
+var player="X";
+var finished=false;
+
+function play(i){
+
+if(tic[i]!==""||finished)return;
+
+tic[i]=player;
+
+document.getElementsByClassName("cell")[i].innerHTML=player;
+
+if(winner()){
+
+document.getElementById("ticResult").innerHTML=
+"🎉 Player "+player+" Wins!";
+
+toast("🎉 Player "+player+" Wins!");
+finished=true;
+return;
+
+}
+
+if(!tic.includes("")){
+
+document.getElementById("ticResult").innerHTML=
+"🤝 Draw!";
+
+finished=true;
+return;
+
+}
+
+player=player==="X"?"O":"X";
+
+document.getElementById("ticResult").innerHTML=
+"Player "+player+"'s Turn";
+
+}
+
+function winner(){
+
+var w=[
+[0,1,2],[3,4,5],[6,7,8],
+[0,3,6],[1,4,7],[2,5,8],
+[0,4,8],[2,4,6]
+];
+
+for(var i=0;i<w.length;i++){
+
+var a=w[i][0];
+var b=w[i][1];
+var c=w[i][2];
+
+if(
+tic[a]!==""&&
+tic[a]===tic[b]&&
+tic[a]===tic[c]
+){
+return true;
+}
+
+}
+
+return false;
+}
+
+function resetTic(){
+
+tic=[
+"","","",
+"","","",
+"","",""
+];
+
+player="X";
+finished=false;
+
+var cells=document.getElementsByClassName("cell");
+
+for(var i=0;i<cells.length;i++){
+cells[i].innerHTML="";
+}
+
+document.getElementById("ticResult").innerHTML=
+"Player X's Turn";
+
+}
+
+/* WHATSAPP */
+function sendWhatsApp(){
+
+var name=document.getElementById("name").value.trim();
+var email=document.getElementById("email").value.trim();
+var phone=document.getElementById("phone").value.trim();
+var message=document.getElementById("message").value.trim();
+
+var result=document.getElementById("formResult");
+
+if(name===""){
+result.innerHTML="❌ Enter your name.";
+return;
+}
+
+if(email===""){
+result.innerHTML="❌ Enter your email.";
+return;
+}
+
+if(message===""){
+result.innerHTML="❌ Write your message.";
+return;
+}
+
+var text=
+"Hello!%0A%0A"+
+"Name: "+encodeURIComponent(name)+
+"%0AEmail: "+encodeURIComponent(email)+
+"%0APhone: "+encodeURIComponent(phone)+
+"%0AMessage: "+encodeURIComponent(message);
+
+result.innerHTML="✅ Opening WhatsApp...";
+
+window.open(
+"https://wa.me/923226503158?text="+text,
+"_blank"
+);
+
+}
+
+/* DOWNLOAD CV */
+function downloadCV(){
+
+var cv=
+"SUBHAN - WEB DEVELOPER\n\n"+
+"About Me\n"+
+"I am a student learning Web Development.\n\n"+
+"Skills\n"+
+"HTML - 90%\n"+
+"CSS - 80%\n"+
+"JavaScript - 70%\n"+
+"Web Development - 75%\n\n"+
+"Projects\n"+
+"My Personal Website\n"+
+"Calculator\n"+
+"Number Guessing Game\n"+
+"Tic-Tac-Toe\n\n"+
+"Contact\n"+
+"WhatsApp: +92 322 6503158";
+
+var blob=new Blob([cv],{type:"text/plain"});
+
+var url=URL.createObjectURL(blob);
+
+var a=document.createElement("a");
+
+a.href=url;
+a.download="Subhan-CV.txt";
+
+a.click();
+
+URL.revokeObjectURL(url);
+
+toast("📄 CV downloaded!");
+
+}
+
+/* BACK TO TOP */
+window.addEventListener("scroll",function(){
+
+var b=document.getElementById("top");
+
+if(window.scrollY>300){
+b.style.display="block";
+}else{
+b.style.display="none";
+}
+
+});
+
+function goTop(){
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+/* CLOSE MOBILE MENU */
+document.querySelectorAll(".navlinks a").forEach(function(a){
+
+a.addEventListener("click",function(){
+
+document.getElementById("navlinks")
+.classList.remove("show");
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
