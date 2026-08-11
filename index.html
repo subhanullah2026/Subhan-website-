@@ -1827,72 +1827,21 @@ return;
 
 }
 
-var text=
-function sendWhatsApp(){
+var text =
+    "Hello!%0A%0A" +
+    "Name: " + encodeURIComponent(name) +
+    "%0AEmail: " + encodeURIComponent(email) +
+    "%0APhone: " + encodeURIComponent(phone) +
+    "%0AMessage: " + encodeURIComponent(message);
 
-var name=document.getElementById("name").value.trim();
-var email=document.getElementById("email").value.trim();
-var phone=document.getElementById("phone").value.trim();
-var message=document.getElementById("message").value.trim();
+result.innerHTML = "✓ Opening WhatsApp...";
 
-var result=document.getElementById("formResult");
+var url =
+    "https://wa.me/923226503158?text=" + text;
 
-if(name===""){
-result.innerHTML="❌ Enter your name.";
-return;
-}
+window.open(url, "_blank");
 
-if(email===""){
-result.innerHTML="❌ Enter your email.";
-return;
-}
-
-if(message===""){
-result.innerHTML="❌ Write your message.";
-return;
-}
-
-var text=
-"Hello!%0A%0A"+
-"Name: "+encodeURIComponent(name)+
-"%0AEmail: "+encodeURIComponent(email)+
-"%0APhone: "+encodeURIComponent(phone)+
-"%0AMessage: "+encodeURIComponent(message);
-
-result.innerHTML="✅ Opening WhatsApp...";
-
-window.open(
-"https://wa.me/923226503158?text="+text,
-"_blank"
-);
-
-}
-
-
-/* TOP BUTTON */
-
-window.addEventListener("scroll",function(){
-
-var top=document.getElementById("top");
-
-if(window.scrollY>300){
-top.style.display="block";
-}else{
-top.style.display="none";
-}
-
-});
-
-
-function goTop(){
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
+   }
 
 /* CLOSE MOBILE MENU */
 
