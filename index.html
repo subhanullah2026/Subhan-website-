@@ -1827,7 +1827,6 @@ return;
 
 }
 
-
 var text=
 
 "Hello!%0A%0A"+
@@ -1848,8 +1847,7 @@ result.innerHTML=
 "✅ Opening WhatsApp...";
 
 
-window.open(
-/* WHATSAPP */
+window.open(/* WHATSAPP */
 
 function sendWhatsApp(){
 
@@ -1876,97 +1874,32 @@ return;
 }
 
 var text=
-"Hello!\n\n"+
-"Name: "+name+
-"\nEmail: "+email+
-"\nPhone: "+phone+
-"\nMessage: "+message;
+"Hello!%0A%0A"+
+"Name: "+encodeURIComponent(name)+
+"%0AEmail: "+encodeURIComponent(email)+
+"%0APhone: "+encodeURIComponent(phone)+
+"%0AMessage: "+encodeURIComponent(message);
 
 result.innerHTML="✅ Opening WhatsApp...";
 
-var url=
-"https://wa.me/923226503158?text="+
-encodeURIComponent(text);
-
-window.open(url,"_blank");
-
-}
-
-
-/* DOWNLOAD CV */
-
-function downloadCV(){
-
-var cv=
-"SUBHAN - WEB DEVELOPER\n\n"+
-"About Me\n"+
-"I am a student learning Web Development.\n\n"+
-"Skills\n"+
-"HTML - 90%\n"+
-"CSS - 80%\n"+
-"JavaScript - 70%\n"+
-"Web Development - 75%\n\n"+
-"Services\n"+
-"Website Development\n"+
-"Website Design\n"+
-"HTML & CSS\n"+
-"JavaScript\n"+
-"Responsive Website\n"+
-"Website Updates\n\n"+
-"Projects\n"+
-"My Personal Website\n"+
-"Calculator\n"+
-"Number Guessing Game\n"+
-"Tic-Tac-Toe\n"+
-"Live Clock\n\n"+
-"Contact\n"+
-"WhatsApp: +92 322 6503158";
-
-var blob=
-new Blob([cv],{type:"text/plain"});
-
-var url=
-URL.createObjectURL(blob);
-
-var a=
-document.createElement("a");
-
-a.href=url;
-
-a.download="Subhan-CV.txt";
-
-document.body.appendChild(a);
-
-a.click();
-
-a.remove();
-
-setTimeout(function(){
-
-URL.revokeObjectURL(url);
-
-},1000);
-
-toast("📄 CV downloaded!");
+window.open(
+"https://wa.me/923226503158?text="+text,
+"_blank"
+);
 
 }
 
 
-/* BACK TO TOP */
+/* TOP BUTTON */
 
 window.addEventListener("scroll",function(){
 
-var b=
-document.getElementById("top");
+var top=document.getElementById("top");
 
 if(window.scrollY>300){
-
-b.style.display="block";
-
+top.style.display="block";
 }else{
-
-b.style.display="none";
-
+top.style.display="none";
 }
 
 });
@@ -1975,11 +1908,8 @@ b.style.display="none";
 function goTop(){
 
 window.scrollTo({
-
 top:0,
-
 behavior:"smooth"
-
 });
 
 }
@@ -1987,8 +1917,7 @@ behavior:"smooth"
 
 /* CLOSE MOBILE MENU */
 
-document.querySelectorAll(".navlinks a")
-.forEach(function(a){
+document.querySelectorAll(".navlinks a").forEach(function(a){
 
 a.addEventListener("click",function(){
 
@@ -2004,20 +1933,15 @@ document.getElementById("navlinks")
 
 setTimeout(function(){
 
-var loader=
-document.getElementById("loader");
+var loader=document.getElementById("loader");
 
 if(loader){
-
 loader.style.display="none";
-
 }
 
 },5000);
-
 
 </script>
 
 </body>
 </html>
-  
