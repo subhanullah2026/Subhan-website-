@@ -268,7 +268,22 @@ transition:.3s
 
 .card:hover{
 transform:translateY(-8px)
+}/* GALLERY */
+
+.gallery{
+max-width:1000px;
+margin:40px auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
 }
+
+.gallery-box{
+height:220px;
+background:#222;
+border-radius:18px;
+box-shadow:0 5px 18px #777;
+   }
 
 .icon{
 font-size:45px;
@@ -799,7 +814,21 @@ Web Development - 75%
 </div>
 
 </section>
+<!-- GALLERY -->
 
+<section id="gallery">
+
+<h2>🖼️ My Gallery</h2>
+
+<div class="gallery">
+
+<div class="gallery-box"></div>
+<div class="gallery-box"></div>
+<div class="gallery-box"></div>
+
+</div>
+
+</section>
 
 <!-- SERVICES -->
 
