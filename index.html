@@ -241,7 +241,43 @@ transform:translateY(-6px);
 background:#0000cc;
    }
 
+/* CONTACT */
 
+#contact{
+    max-width:1000px;
+    margin:60px auto;
+    padding:20px;
+    text-align:center;
+}
+
+#contact h2{
+    color:#55c7ff;
+    font-size:32px;
+    margin-bottom:30px;
+}
+
+.contact-box{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.contact-box a{
+    display:block;
+    background:#0000b8;
+    color:white;
+    text-decoration:none;
+    padding:20px 35px;
+    border-radius:18px;
+    font-size:20px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.contact-box a:hover{
+    transform:translateY(-6px);
+   }
 /* =========================
    SERVICES
 ========================= */
@@ -923,7 +959,28 @@ Web Development - 75%
 </div>
 
 </section>
+<!-- CONTACT -->
+<section id="contact">
 
+<h2>📞 My Contact</h2>
+
+<div class="contact-box">
+
+<a href="tel:+923XXXXXXXXX">
+📱 Phone
+</a>
+
+<a href="mailto:your@email.com">
+📧 Email
+</a>
+
+<a href="https://wa.me/923XXXXXXXXX" target="_blank">
+💬 WhatsApp
+</a>
+
+</div>
+
+   </section>
 <!-- SERVICES -->
 
 <section 
@@ -1996,6 +2053,11 @@ loader.style.display="none";
 },5000);
 
 </script>
+
+<footer>
+  <p>© 2026 Subhan. All Rights Reserved.</p>
+</footer>
+
 
 </body>
 </html>
