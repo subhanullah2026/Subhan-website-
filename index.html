@@ -1490,13 +1490,14 @@ button{
   color:#ffffff !important;
   text-shadow:0 4px 15px rgba(0,0,0,.35) !important;
 
-   }/* ===== FINAL TEXT VISIBILITY FIX ===== */
+   /* ===== LIGHT + DARK MODE FINAL FIX ===== */
 
+/* LIGHT MODE */
 body{
-  color:#ffffff !important;
+  color:#111827;
 }
 
-/* Dark cards */
+/* Light mode cards */
 .about-box,
 .skill-box,
 .gallery-box,
@@ -1507,10 +1508,11 @@ body{
 .social-box,
 .testimonial-box,
 .card{
-  color:#ffffff !important;
+  color:#111827;
+  background:#ffffff;
 }
 
-/* Card headings */
+/* Light mode headings */
 .about-box h2,
 .about-box h3,
 .skill-box h2,
@@ -1531,11 +1533,10 @@ body{
 .testimonial-box h3,
 .card h2,
 .card h3{
-  color:#ffffff !important;
-  text-shadow:0 2px 8px rgba(0,0,0,.4) !important;
+  color:#111827;
 }
 
-/* Card paragraphs */
+/* Light mode paragraphs */
 .about-box p,
 .gallery-box p,
 .achievement-box p,
@@ -1545,113 +1546,112 @@ body{
 .social-box p,
 .testimonial-box p,
 .card p{
-  color:#e5e7eb !important;
+  color:#374151;
 }
 
-/* Contact links */
-.contact-box a,
-.social-box a{
-  color:#ffffff !important;
+/* ===== DARK MODE ===== */
+
+body.dark{
+  color:#ffffff;
 }
 
-/* Skills text */
-.skill-box span,
-.skill-box label,
-.skills span,
-.skills label{
-  color:#ffffff !important;
+/* Dark mode cards */
+body.dark .about-box,
+body.dark .skill-box,
+body.dark .gallery-box,
+body.dark .achievement-box,
+body.dark .project-box,
+body.dark .service-box,
+body.dark .contact-box,
+body.dark .social-box,
+body.dark .testimonial-box,
+body.dark .card{
+  background:#17243a;
+  color:#ffffff;
 }
 
-/* Gallery text */
-.gallery-box *{
-  color:#ffffff !important;
+/* Dark mode headings */
+body.dark .about-box h2,
+body.dark .about-box h3,
+body.dark .skill-box h2,
+body.dark .skill-box h3,
+body.dark .gallery-box h2,
+body.dark .gallery-box h3,
+body.dark .achievement-box h2,
+body.dark .achievement-box h3,
+body.dark .project-box h2,
+body.dark .project-box h3,
+body.dark .service-box h2,
+body.dark .service-box h3,
+body.dark .contact-box h2,
+body.dark .contact-box h3,
+body.dark .social-box h2,
+body.dark .social-box h3,
+body.dark .testimonial-box h2,
+body.dark .testimonial-box h3,
+body.dark .card h2,
+body.dark .card h3{
+  color:#ffffff;
 }
 
-/* Services text */
-.service-box *{
-  color:#ffffff !important;
+/* Dark mode paragraphs */
+body.dark .about-box p,
+body.dark .gallery-box p,
+body.dark .achievement-box p,
+body.dark .project-box p,
+body.dark .service-box p,
+body.dark .contact-box p,
+body.dark .social-box p,
+body.dark .testimonial-box p,
+body.dark .card p{
+  color:#e5e7eb;
 }
 
-/* Achievements text */
-.achievement-box *{
-  color:#ffffff !important;
+/* Skills */
+body.dark .skill-box span,
+body.dark .skill-box label{
+  color:#ffffff;
 }
 
-/* Testimonials text */
-.testimonial-box *{
-  color:#ffffff !important;
-}
-
-/* Contact text */
-.contact-box *{
-  color:#ffffff !important;
-}
-
-/* Project text */
-.project-box *{
-  color:#ffffff !important;
-}
-
-/* Navbar */
-.navbar .logo{
-  color:#ffffff !important;
-}
-
-.menu{
-  color:#111827 !important;
-  background:#ffffff !important;
-}
-
-/* Home */
-#home h1{
-  color:#ffffff !important;
-}
-
-#home h2{
-  color:#00bfff !important;
-}
-
-#home p{
-  color:#ffffff !important;
+/* Contact */
+body.dark .contact-box a,
+body.dark .social-box a{
+  color:#ffffff;
 }
 
 /* Section headings */
 section > h2{
-  color:#ffffff !important;
-  text-shadow:0 3px 10px rgba(0,0,0,.5) !important;
+  color:#111827;
 }
 
-/* Buttons */
-button{
+body.dark section > h2{
   color:#ffffff;
 }
 
-/* Mobile */
-@media(max-width:700px){
+/* Home */
+#home h1{
+  color:#111827;
+}
 
-  .about-box,
-  .skill-box,
-  .gallery-box,
-  .achievement-box,
-  .project-box,
-  .service-box,
-  .contact-box,
-  .social-box,
-  .testimonial-box{
-    color:#ffffff !important;
-  }
+#home h2{
+  color:#001eff;
+}
 
-  .about-box *,
-  .skill-box *,
-  .gallery-box *,
-  .achievement-box *,
-  .project-box *,
-  .service-box *,
-  .contact-box *,
-  .social-box *,
-  .testimonial-box *{
-    color:#ffffff !important;
-  }
+#home p{
+  color:#374151;
+}
+
+body.dark #home h1{
+  color:#ffffff;
+}
+
+body.dark #home h2{
+  color:#001eff;
+}
+
+body.dark #home p{
+  color:#ffffff;
+   }
    }
 </style>
 </head>
