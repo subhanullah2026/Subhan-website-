@@ -7,6 +7,9 @@
 <title>Subhan's Personal Website</title>
 
 <style>
+/* =========================
+   BASIC
+========================= */
 *{
     margin:0;
     padding:0;
@@ -14,24 +17,55 @@
     scroll-behavior:smooth;
 }
 
-body{
-    font-family:Arial,sans-serif;
-    background:#f4f8ff;
-    color:#172033;
-    transition:0.4s;
+:root{
+    --bg:#f4f8ff;
+    --bg2:#ffffff;
+    --text:#10182d;
+    --text2:#526078;
+    --primary:#1769e0;
+    --primary2:#00b7ff;
+    --card:#ffffff;
+    --nav:#071126;
+    --border:#dce6f5;
+    --shadow:0 15px 40px rgba(20,50,100,.12);
 }
 
-/* NAVBAR */
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    transition:background .3s,color .3s;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+body.dark{
+    --bg:#050b18;
+    --bg2:#0b1428;
+    --text:#ffffff;
+    --text2:#c9d4e8;
+    --card:#111e35;
+    --nav:#020713;
+    --border:#263a5d;
+    --shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+/* =========================
+   NAVBAR
+========================= */
 nav{
     position:sticky;
     top:0;
-    z-index:999;
-    background:#071126;
-    padding:18px 30px;
-    box-shadow:0 3px 15px rgba(0,0,0,.2);
+    z-index:1000;
+    background:var(--nav);
+    padding:18px 5%;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
 }
 
 .navbar{
+    max-width:1200px;
+    margin:auto;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -44,314 +78,335 @@ nav{
 }
 
 .menu-btn{
+    border:none;
     background:white;
     color:#111;
-    border:none;
-    border-radius:35px;
-    padding:14px 22px;
+    padding:14px 25px;
+    border-radius:40px;
     font-size:20px;
     cursor:pointer;
 }
 
 .menu{
     display:none;
+    max-width:1200px;
+    margin:15px auto 0;
     text-align:center;
-    padding-top:20px;
-}
-
-.menu a{
-    display:block;
-    color:white;
-    text-decoration:none;
-    font-size:20px;
-    font-weight:bold;
-    padding:13px;
 }
 
 .menu.show{
     display:block;
 }
 
-/* SECTIONS */
-section{
-    padding:90px 7%;
-    text-align:center;
-}
-
-.hero{
-    min-height:650px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    background:linear-gradient(135deg,#eaf4ff,#ffffff);
-}
-
-.profile{
-    width:150px;
-    height:150px;
-    border-radius:50%;
-    object-fit:cover;
-    border:6px solid #1e90ff;
-    margin-bottom:25px;
-    background:#dceeff;
-}
-
-.hero h1{
-    font-size:55px;
-    margin:15px 0;
-}
-
-.hero h2{
-    color:#006cff;
-    font-size:30px;
-    margin:15px 0;
-}
-
-.hero p{
-    font-size:21px;
-    margin:8px;
-}
-
-.btn{
-    display:inline-block;
-    margin:15px 5px;
-    padding:15px 25px;
-    border:none;
-    border-radius:30px;
-    background:#111ee8;
+.menu a{
+    display:block;
     color:white;
-    font-size:18px;
-    cursor:pointer;
     text-decoration:none;
+    padding:12px;
+    font-size:19px;
+    font-weight:bold;
 }
 
-.btn:hover{
-    transform:scale(1.05);
+.menu a:hover{
+    color:#35c7ff;
 }
 
-/* HEADINGS */
+/* =========================
+   SECTIONS
+========================= */
+section{
+    padding:90px 6%;
+    min-height:500px;
+    background:var(--bg);
+    transition:background .3s;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
 .section-title{
+    text-align:center;
     font-size:45px;
     margin-bottom:15px;
 }
 
 .line{
-    width:140px;
+    width:280px;
     height:7px;
-    background:#19b9ff;
-    border-radius:10px;
+    border-radius:20px;
+    background:linear-gradient(90deg,var(--primary),var(--primary2));
     margin:0 auto 50px;
-    box-shadow:0 0 15px #19b9ff;
+    box-shadow:0 0 20px rgba(0,180,255,.4);
 }
 
-/* BOXES */
-.box{
-    max-width:900px;
-    margin:20px auto;
-    padding:35px;
-    border-radius:30px;
-    background:white;
-    box-shadow:0 8px 30px rgba(0,0,0,.15);
+/* =========================
+   HERO
+========================= */
+.hero{
+    min-height:750px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:linear-gradient(135deg,#eef7ff,#ffffff);
 }
 
-.box p{
-    font-size:20px;
-    line-height:1.8;
+body.dark .hero{
+    background:linear-gradient(135deg,#071126,#0d1d3c);
 }
 
-/* SKILLS */
-.skill-box{
-    max-width:850px;
-    margin:20px auto;
-    background:white;
-    padding:25px;
+.profile{
+    width:190px;
+    height:190px;
+    object-fit:cover;
+    border-radius:50%;
+    border:8px solid #2494ff;
+    box-shadow:0 0 35px rgba(0,150,255,.35);
+    margin-bottom:30px;
+}
+
+.photo-placeholder{
+    width:190px;
+    height:190px;
+    margin:0 auto 30px;
+    border-radius:50%;
+    border:8px solid #2494ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#dcecff;
+    color:#1769e0;
+    font-size:70px;
+    font-weight:bold;
+}
+
+.hero h1{
+    font-size:58px;
+    margin-bottom:20px;
+}
+
+.hero h2{
+    color:var(--primary);
+    font-size:32px;
+    min-height:45px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:22px;
+    color:var(--text2);
+    margin:10px 0;
+}
+
+.btn{
+    display:inline-block;
+    border:none;
+    background:linear-gradient(90deg,#1825ee,#173be8);
+    color:white;
+    padding:17px 35px;
+    margin:12px 7px;
+    border-radius:40px;
+    font-size:19px;
+    cursor:pointer;
+    text-decoration:none;
+    box-shadow:0 8px 20px rgba(25,40,230,.25);
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================
+   CARDS
+========================= */
+.box,
+.card,
+.skill-box,
+.service,
+.project,
+.contact-box,
+.game-box{
+    background:var(--card);
+    border:1px solid var(--border);
     border-radius:25px;
-    text-align:left;
-    box-shadow:0 8px 25px rgba(0,0,0,.12);
+    box-shadow:var(--shadow);
+    transition:background .3s,color .3s;
 }
 
-.skill-box strong{
-    font-size:20px;
+.box{
+    padding:40px;
+    text-align:center;
+    font-size:21px;
+    line-height:1.8;
+    color:var(--text2);
+}
+
+/* =========================
+   SKILLS
+========================= */
+.skills{
+    max-width:900px;
+    margin:auto;
+}
+
+.skill-box{
+    padding:22px;
+    margin:18px 0;
+}
+
+.skill-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+    font-size:18px;
 }
 
 .progress{
-    height:25px;
-    background:#ddd;
+    height:15px;
+    background:#dce4ef;
     border-radius:20px;
-    margin-top:12px;
     overflow:hidden;
 }
 
 .progress span{
     display:block;
     height:100%;
-    background:linear-gradient(90deg,#1010d9,#16baff);
+    width:0;
+    background:linear-gradient(90deg,var(--primary),var(--primary2));
     border-radius:20px;
+    transition:width 1.2s ease;
 }
 
-/* CARDS */
-.cards{
+/* =========================
+   SERVICES / PROJECTS
+========================= */
+.grid{
+    max-width:1100px;
+    margin:auto;
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:25px;
-    max-width:1100px;
-    margin:auto;
 }
 
+.service,
+.project,
 .card{
-    background:white;
-    padding:35px 25px;
-    border-radius:30px;
-    box-shadow:0 8px 25px rgba(0,0,0,.15);
-    transition:.3s;
+    padding:30px;
+    text-align:center;
 }
 
-.card:hover{
-    transform:translateY(-8px);
-}
-
-.card .icon{
-    font-size:65px;
-    margin-bottom:20px;
-}
-
+.service h3,
+.project h3,
 .card h3{
     font-size:25px;
     margin-bottom:15px;
 }
 
+.service p,
+.project p,
 .card p{
-    font-size:18px;
-    line-height:1.7;
+    color:var(--text2);
+    line-height:1.6;
 }
 
-/* PROJECTS */
-.project{
-    background:white;
-    padding:30px;
-    border-radius:25px;
-    box-shadow:0 8px 25px rgba(0,0,0,.15);
-}
-
-.project h3{
-    font-size:24px;
-    margin:15px;
-}
-
-/* GALLERY */
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
-    max-width:1000px;
-    margin:auto;
-}
-
-.gallery-box{
-    height:220px;
-    border-radius:25px;
-    background:white;
-    box-shadow:0 8px 25px rgba(0,0,0,.15);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:80px;
-}
-
-/* ACHIEVEMENTS */
-.achievement{
-    max-width:900px;
-    margin:15px auto;
-    background:white;
-    padding:25px;
-    border-radius:25px;
-    font-size:22px;
-    box-shadow:0 8px 20px rgba(0,0,0,.12);
-}
-
-/* CLOCK */
+/* =========================
+   CLOCK
+========================= */
 .clock-box{
-    max-width:500px;
+    max-width:800px;
     margin:auto;
-    padding:40px;
-    border-radius:30px;
     background:#071126;
     color:white;
-    box-shadow:0 8px 30px rgba(0,0,0,.3);
+    padding:45px 20px;
+    text-align:center;
+    border-radius:45px;
+    box-shadow:0 20px 45px rgba(0,0,0,.2);
 }
 
 #clock{
-    font-size:45px;
+    font-size:65px;
     font-weight:bold;
+    letter-spacing:3px;
 }
 
 #date{
-    font-size:20px;
-    margin-top:15px;
+    font-size:22px;
+    margin-top:20px;
+    color:#cbd8ee;
 }
 
-/* CALCULATOR */
+/* =========================
+   CALCULATOR
+========================= */
 .calculator{
-    max-width:350px;
+    max-width:380px;
     margin:auto;
-    background:#111;
-    padding:20px;
-    border-radius:25px;
+    padding:25px;
+    background:#071126;
+    border-radius:30px;
+    box-shadow:var(--shadow);
 }
 
 #display{
     width:100%;
-    height:65px;
-    font-size:28px;
-    text-align:right;
-    padding:10px;
-    margin-bottom:15px;
-    border-radius:10px;
+    padding:20px;
+    font-size:30px;
     border:none;
+    border-radius:15px;
+    margin-bottom:15px;
+    text-align:right;
 }
 
-.calc-buttons{
+.calc-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:8px;
+    gap:10px;
 }
 
-.calc-buttons button{
-    height:60px;
+.calc-grid button{
+    padding:20px 5px;
+    font-size:20px;
     border:none;
-    border-radius:12px;
-    font-size:22px;
+    border-radius:15px;
     cursor:pointer;
-    background:#222;
-    color:white;
+    background:#edf3ff;
+    color:#111;
 }
 
-.calc-buttons button:hover{
-    background:#333;
+.calc-grid button:hover{
+    background:#bcd8ff;
 }
 
-/* GAMES */
+/* =========================
+   GAMES
+========================= */
 .game-box{
     max-width:500px;
-    margin:auto;
-    background:white;
+    margin:25px auto;
     padding:30px;
-    border-radius:25px;
-    box-shadow:0 8px 25px rgba(0,0,0,.15);
+    text-align:center;
 }
 
 .game-box input{
-    width:80%;
+    width:100%;
     padding:15px;
+    margin:10px 0;
+    border:1px solid var(--border);
+    border-radius:12px;
     font-size:18px;
-    border-radius:10px;
-    border:1px solid #aaa;
-    margin:10px;
+    background:var(--bg2);
+    color:var(--text);
 }
 
-/* TIC TAC TOE */
-.tic{
+.result{
+    margin-top:15px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.tic-board{
     max-width:330px;
     margin:20px auto;
     display:grid;
@@ -359,165 +414,101 @@ section{
     gap:8px;
 }
 
-.cell{
+.tic-cell{
     height:100px;
-    background:#101ee8;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:40px;
+    border:none;
     border-radius:15px;
+    background:#1838df;
+    color:white;
+    font-size:40px;
     cursor:pointer;
 }
 
-/* CONTACT */
+/* =========================
+   CONTACT
+========================= */
 .contact-box{
     max-width:700px;
     margin:auto;
+    padding:35px;
 }
 
 .contact-box input,
 .contact-box textarea{
     width:100%;
-    padding:16px;
+    padding:15px;
     margin:8px 0;
-    border:1px solid #aaa;
+    border:1px solid var(--border);
     border-radius:12px;
+    background:var(--bg2);
+    color:var(--text);
     font-size:17px;
 }
 
 .contact-box textarea{
-    height:140px;
+    min-height:140px;
+    resize:vertical;
 }
 
-/* SOCIAL */
+/* =========================
+   SOCIAL
+========================= */
 .social{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
-    max-width:700px;
+    max-width:850px;
     margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
 }
 
 .social a{
-    background:#111ee8;
-    color:white;
-    padding:20px;
-    border-radius:20px;
     text-decoration:none;
-    font-size:22px;
+    text-align:center;
+    padding:22px;
+    background:#111be0;
+    color:white;
+    border-radius:20px;
+    font-size:20px;
+    font-weight:bold;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 footer{
     background:#071126;
     color:white;
-    padding:45px 20px;
     text-align:center;
+    padding:45px 20px;
     font-size:18px;
 }
 
-/* TOP BUTTON */
+footer p{
+    margin:10px;
+}
+
+/* =========================
+   TOP BUTTON
+========================= */
 #topBtn{
+    display:none;
     position:fixed;
     right:20px;
     bottom:20px;
-    display:none;
+    z-index:999;
     border:none;
-    background:#111ee8;
+    background:#1739e8;
     color:white;
-    padding:15px 18px;
+    width:55px;
+    height:55px;
     border-radius:50%;
-    font-size:20px;
+    font-size:25px;
     cursor:pointer;
 }
 
 /* =========================
-   DARK MODE - FIXED
+   MOBILE
 ========================= */
-
-body.dark{
-    background:#071126;
-    color:#ffffff;
-}
-
-body.dark section{
-    background:#071126;
-    color:#ffffff;
-}
-
-body.dark .hero{
-    background:linear-gradient(135deg,#071126,#10284a);
-}
-
-body.dark .box,
-body.dark .skill-box,
-body.dark .card,
-body.dark .project,
-body.dark .gallery-box,
-body.dark .achievement,
-body.dark .game-box{
-    background:#182b43 !important;
-    color:#ffffff !important;
-    border:1px solid #21496d;
-    box-shadow:0 0 25px rgba(0,180,255,.12);
-}
-
-body.dark .box *,
-body.dark .skill-box *,
-body.dark .card *,
-body.dark .project *,
-body.dark .gallery-box *,
-body.dark .achievement *,
-body.dark .game-box *{
-    color:#ffffff !important;
-}
-
-body.dark .section-title{
-    color:#ffffff !important;
-}
-
-body.dark .hero h1,
-body.dark .hero p{
-    color:#ffffff !important;
-}
-
-body.dark .hero h2{
-    color:#45c7ff !important;
-}
-
-body.dark .skill-box{
-    background:#182b43 !important;
-}
-
-body.dark .progress{
-    background:#405066;
-}
-
-body.dark .contact-box input,
-body.dark .contact-box textarea,
-body.dark .game-box input{
-    background:#182b43;
-    color:#ffffff;
-    border:1px solid #4c7195;
-}
-
-body.dark .contact-box input::placeholder,
-body.dark .contact-box textarea::placeholder{
-    color:#cbd5e1;
-}
-
-body.dark footer{
-    background:#030914;
-    color:#ffffff;
-}
-
-body.dark .social a{
-    color:white;
-}
-
-/* MOBILE */
 @media(max-width:700px){
 
     nav{
@@ -525,31 +516,39 @@ body.dark .social a{
     }
 
     .logo{
-        font-size:42px;
+        font-size:40px;
+    }
+
+    .menu-btn{
+        font-size:18px;
+        padding:13px 22px;
     }
 
     section{
-        padding:75px 5%;
+        padding:70px 20px;
     }
 
     .hero{
-        min-height:650px;
+        min-height:700px;
     }
 
     .hero h1{
-        font-size:48px;
+        font-size:46px;
     }
 
     .hero h2{
         font-size:27px;
     }
 
+    .hero p{
+        font-size:19px;
+    }
+
     .section-title{
         font-size:38px;
     }
 
-    .cards,
-    .gallery{
+    .grid{
         grid-template-columns:1fr;
     }
 
@@ -557,21 +556,36 @@ body.dark .social a{
         grid-template-columns:1fr 1fr;
     }
 
-    .card{
-        padding:35px 20px;
-    }
-
-    .profile{
-        width:130px;
-        height:130px;
-    }
-
-    .clock-box{
-        padding:30px 15px;
-    }
-
     #clock{
-        font-size:35px;
+        font-size:42px;
+    }
+
+    #date{
+        font-size:17px;
+    }
+
+    .profile,
+    .photo-placeholder{
+        width:155px;
+        height:155px;
+    }
+
+    .box{
+        padding:25px;
+    }
+}
+
+@media(max-width:420px){
+    .social{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .logo{
+        font-size:34px;
     }
 }
 </style>
@@ -579,677 +593,389 @@ body.dark .social a{
 
 <body>
 
-<!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 <nav>
-<div class="navbar">
+    <div class="navbar">
+        <div class="logo">Subhan</div>
 
-<div class="logo">Subhan</div>
+        <button class="menu-btn" onclick="menuToggle()">
+            ☰ Menu
+        </button>
+    </div>
 
-<button class="menu-btn" onclick="menuToggle()">
-☰ Menu
-</button>
-
-</div>
-
-<div class="menu" id="menu">
-
-<a href="#home" onclick="closeMenu()">Home</a>
-<a href="#about" onclick="closeMenu()">About</a>
-<a href="#skills" onclick="closeMenu()">Skills</a>
-<a href="#services" onclick="closeMenu()">Services</a>
-<a href="#projects" onclick="closeMenu()">Projects</a>
-<a href="#gallery" onclick="closeMenu()">Gallery</a>
-<a href="#achievements" onclick="closeMenu()">Achievements</a>
-<a href="#clockSection" onclick="closeMenu()">Clock</a>
-<a href="#calculator" onclick="closeMenu()">Calculator</a>
-<a href="#game" onclick="closeMenu()">Game</a>
-<a href="#tic" onclick="closeMenu()">Tic-Tac-Toe</a>
-<a href="#contact" onclick="closeMenu()">Contact</a>
-
-</div>
+    <div class="menu" id="menu">
+        <a href="#home" onclick="closeMenu()">Home</a>
+        <a href="#about" onclick="closeMenu()">About</a>
+        <a href="#skills" onclick="closeMenu()">Skills</a>
+        <a href="#services" onclick="closeMenu()">Services</a>
+        <a href="#projects" onclick="closeMenu()">Projects</a>
+        <a href="#clock-section" onclick="closeMenu()">Clock</a>
+        <a href="#calculator" onclick="closeMenu()">Calculator</a>
+        <a href="#games" onclick="closeMenu()">Games</a>
+        <a href="#contact" onclick="closeMenu()">Contact</a>
+    </div>
 </nav>
 
-
-<!-- HOME -->
+<!-- =========================
+     HOME
+========================= -->
 <section id="home" class="hero">
+    <div class="container">
 
-<img
-src="AA.jpg"
-class="profile"
-alt="My Photo"
-onerror="this.style.display='none';"
->
+        <img
+            src="AA.jpg"
+            class="profile"
+            id="profileImage"
+            alt="Subhan Photo"
+            onerror="this.style.display='none';document.getElementById('photoPlaceholder').style.display='flex';"
+        >
 
-<h1>Welcome to My Website</h1>
+        <div class="photo-placeholder" id="photoPlaceholder" style="display:none;">
+            S
+        </div>
 
-<h2 id="typing">I am a Web Developer.</h2>
+        <h1>Welcome to My Website</h1>
 
-<p>My name is Subhan.</p>
-<p>I am learning Web Development.</p>
+        <h2 id="typing">I am a Web Developer.</h2>
 
-<div>
+        <p>My name is Subhan.</p>
+        <p>I am learning Web Development.</p>
 
-<button class="btn" onclick="welcome()">
-👋 Click Me
-</button>
+        <button class="btn" onclick="welcome()">
+            👋 Click Me
+        </button>
 
-<button class="btn" onclick="darkMode()">
-🌙 Dark Mode
-</button>
+        <button class="btn" onclick="darkMode()">
+            🌙 Dark Mode
+        </button>
 
-</div>
+        <a class="btn" href="CV.pdf" download>
+            📄 Download CV
+        </a>
 
-<a class="btn" href="#" onclick="downloadCV()">
-📄 Download CV
-</a>
-
+    </div>
 </section>
 
-
-<!-- ABOUT -->
+<!-- =========================
+     ABOUT
+========================= -->
 <section id="about">
+    <div class="container">
 
-<h2 class="section-title">👨‍💻 About Me</h2>
-<div class="line"></div>
+        <h2 class="section-title">👨‍💻 About Me</h2>
+        <div class="line"></div>
 
-<div class="box">
+        <div class="box">
+            <p>
+                I am a student and I am learning HTML, CSS and JavaScript.
+            </p>
 
-<p>
-I am a student and I am learning HTML, CSS and JavaScript.
-My goal is to become a professional Web Developer.
-I enjoy creating modern, responsive and beautiful websites.
-</p>
+            <p>
+                My goal is to become a professional Web Developer.
+            </p>
 
-</div>
+            <p>
+                I enjoy creating modern, responsive and useful websites.
+            </p>
+        </div>
 
+    </div>
 </section>
 
-
-<!-- SKILLS -->
+<!-- =========================
+     SKILLS
+========================= -->
 <section id="skills">
+    <div class="container">
 
-<h2 class="section-title">💻 My Skills</h2>
-<div class="line"></div>
+        <h2 class="section-title">💻 My Skills</h2>
+        <div class="line"></div>
 
-<div class="skill-box">
-<strong>HTML - 90%</strong>
-<div class="progress">
-<span style="width:90%"></span>
-</div>
-</div>
+        <div class="skills">
 
-<div class="skill-box">
-<strong>CSS - 80%</strong>
-<div class="progress">
-<span style="width:80%"></span>
-</div>
-</div>
+            <div class="skill-box">
+                <div class="skill-top">
+                    <strong>HTML</strong>
+                    <strong>90%</strong>
+                </div>
+                <div class="progress">
+                    <span data-width="90%"></span>
+                </div>
+            </div>
 
-<div class="skill-box">
-<strong>JavaScript - 70%</strong>
-<div class="progress">
-<span style="width:70%"></span>
-</div>
-</div>
+            <div class="skill-box">
+                <div class="skill-top">
+                    <strong>CSS</strong>
+                    <strong>80%</strong>
+                </div>
+                <div class="progress">
+                    <span data-width="80%"></span>
+                </div>
+            </div>
 
-<div class="skill-box">
-<strong>Web Development - 75%</strong>
-<div class="progress">
-<span style="width:75%"></span>
-</div>
-</div>
+            <div class="skill-box">
+                <div class="skill-top">
+                    <strong>JavaScript</strong>
+                    <strong>70%</strong>
+                </div>
+                <div class="progress">
+                    <span data-width="70%"></span>
+                </div>
+            </div>
 
+            <div class="skill-box">
+                <div class="skill-top">
+                    <strong>Web Development</strong>
+                    <strong>75%</strong>
+                </div>
+                <div class="progress">
+                    <span data-width="75%"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </section>
 
-
-<!-- SERVICES -->
+<!-- =========================
+     SERVICES
+========================= -->
 <section id="services">
+    <div class="container">
 
-<h2 class="section-title">🛠️ My Services</h2>
-<div class="line"></div>
+        <h2 class="section-title">🛠️ Services</h2>
+        <div class="line"></div>
 
-<div class="cards">
+        <div class="grid">
 
-<div class="card">
-<div class="icon">🌐</div>
-<h3>Website Development</h3>
-<p>
-سادہ، خوبصورت اور responsive websites بناتا ہوں۔
-</p>
-</div>
+            <div class="service">
+                <h3>🌐 Website Design</h3>
+                <p>
+                    Modern and responsive websites for mobile and desktop.
+                </p>
+            </div>
 
-<div class="card">
-<div class="icon">🎨</div>
-<h3>Website Design</h3>
-<p>
-Mobile اور desktop کے لیے خوبصورت website designs بناتا ہوں۔
-</p>
-</div>
+            <div class="service">
+                <h3>🎨 Web Styling</h3>
+                <p>
+                    Clean, attractive and professional HTML and CSS designs.
+                </p>
+            </div>
 
-<div class="card">
-<div class="icon">💻</div>
-<h3>HTML & CSS</h3>
-<p>
-Modern اور clean web pages HTML اور CSS کے ذریعے بناتا ہوں۔
-</p>
-</div>
+            <div class="service">
+                <h3>⚡ JavaScript</h3>
+                <p>
+                    Interactive features and useful JavaScript functionality.
+                </p>
+            </div>
 
-<div class="card">
-<div class="icon">⚡</div>
-<h3>JavaScript</h3>
-<p>
-Website میں interactive features اور functions شامل کرتا ہوں۔
-</p>
-</div>
-
-<div class="card">
-<div class="icon">📱</div>
-<h3>Responsive Design</h3>
-<p>
-Website mobile، tablet اور computer پر بہتر چلتی ہے۔
-</p>
-</div>
-
-<div class="card">
-<div class="icon">🔧</div>
-<h3>Website Updates</h3>
-<p>
-موجودہ website میں text، design اور نئے sections شامل کرنے میں مدد۔
-</p>
-</div>
-
-</div>
-
+        </div>
+    </div>
 </section>
 
-
-<!-- PROJECTS -->
+<!-- =========================
+     PROJECTS
+========================= -->
 <section id="projects">
+    <div class="container">
 
-<h2 class="section-title">📂 My Projects</h2>
-<div class="line"></div>
+        <h2 class="section-title">🚀 My Projects</h2>
+        <div class="line"></div>
 
-<div class="cards">
+        <div class="grid">
 
-<div class="project">
-<div class="icon">🌐</div>
-<h3>Personal Website</h3>
-<p>My personal portfolio website.</p>
-</div>
+            <div class="project">
+                <h3>🌐 Personal Website</h3>
+                <p>
+                    My personal portfolio website made with HTML, CSS and JavaScript.
+                </p>
+            </div>
 
-<div class="project">
-<div class="icon">🧮</div>
-<h3>Calculator</h3>
-<p>JavaScript calculator project.</p>
-</div>
+            <div class="project">
+                <h3>🧮 Calculator</h3>
+                <p>
+                    A simple working calculator using JavaScript.
+                </p>
+            </div>
 
-<div class="project">
-<div class="icon">🎮</div>
-<h3>Number Game</h3>
-<p>Guess the number game.</p>
-</div>
+            <div class="project">
+                <h3>🎮 Number Game</h3>
+                <p>
+                    Guess the secret number between 1 and 100.
+                </p>
+            </div>
 
-<div class="project">
-<div class="icon">❌</div>
-<h3>Tic-Tac-Toe</h3>
-<p>Two player Tic-Tac-Toe game.</p>
-</div>
+            <div class="project">
+                <h3>❌⭕ Tic-Tac-Toe</h3>
+                <p>
+                    Two-player Tic-Tac-Toe game.
+                </p>
+            </div>
 
-<div class="project">
-<div class="icon">⏰</div>
-<h3>Live Clock</h3>
-<p>Live digital clock using JavaScript.</p>
-</div>
+            <div class="project">
+                <h3>🕐 Live Clock</h3>
+                <p>
+                    Real-time digital clock and date.
+                </p>
+            </div>
 
-<div class="project">
-<div class="icon">📞</div>
-<h3>Contact System</h3>
-<p>Contact and WhatsApp message system.</p>
-</div>
+            <div class="project">
+                <h3>📱 Contact</h3>
+                <p>
+                    WhatsApp contact form for visitors.
+                </p>
+            </div>
 
-</div>
-
+        </div>
+    </div>
 </section>
 
+<!-- =========================
+     CLOCK
+========================= -->
+<section id="clock-section">
+    <div class="container">
 
-<!-- GALLERY -->
-<section id="gallery">
+        <h2 class="section-title">⏰ Live Digital Clock</h2>
+        <div class="line"></div>
 
-<h2 class="section-title">🖼️ My Gallery</h2>
-<div class="line"></div>
+        <div class="clock-box">
+            <div id="clock">00:00:00</div>
+            <div id="date">Loading...</div>
+        </div>
 
-<div class="gallery">
-
-<div class="gallery-box">🌄</div>
-<div class="gallery-box">💻</div>
-<div class="gallery-box">🌐</div>
-<div class="gallery-box">🎨</div>
-<div class="gallery-box">🚀</div>
-<div class="gallery-box">📱</div>
-
-</div>
-
+    </div>
 </section>
 
-
-<!-- ACHIEVEMENTS -->
-<section id="achievements">
-
-<h2 class="section-title">🏆 My Achievements</h2>
-<div class="line"></div>
-
-<div class="achievement">
-🏆 Learning and building websites.
-</div>
-
-<div class="achievement">
-💻 Created personal web projects.
-</div>
-
-<div class="achievement">
-☆ Built my first personal website.
-</div>
-
-</section>
-
-
-<!-- CLOCK -->
-<section id="clockSection">
-
-<h2 class="section-title">⏰ Live Digital Clock</h2>
-<div class="line"></div>
-
-<div class="clock-box">
-
-<div id="clock">00:00:00</div>
-<div id="date">Loading...</div>
-
-</div>
-
-</section>
-
-
-<!-- CALCULATOR -->
+<!-- =========================
+     CALCULATOR
+========================= -->
 <section id="calculator">
+    <div class="container">
 
-<h2 class="section-title">🧮 Calculator</h2>
-<div class="line"></div>
+        <h2 class="section-title">🧮 Calculator</h2>
+        <div class="line"></div>
 
-<div class="calculator">
+        <div class="calculator">
 
-<input id="display" readonly>
+            <input type="text" id="display" readonly>
 
-<div class="calc-buttons">
+            <div class="calc-grid">
 
-<button onclick="clearCalc()">C</button>
-<button onclick="delCalc()">⌫</button>
-<button onclick="calcAdd('/')">÷</button>
-<button onclick="calcAdd('*')">×</button>
+                <button onclick="clearCalc()">C</button>
+                <button onclick="deleteCalc()">⌫</button>
+                <button onclick="calcAdd('%')">%</button>
+                <button onclick="calcAdd('/')">÷</button>
 
-<button onclick="calcAdd('7')">7</button>
-<button onclick="calcAdd('8')">8</button>
-<button onclick="calcAdd('9')">9</button>
-<button onclick="calcAdd('-')">−</button>
+                <button onclick="calcAdd('7')">7</button>
+                <button onclick="calcAdd('8')">8</button>
+                <button onclick="calcAdd('9')">9</button>
+                <button onclick="calcAdd('*')">×</button>
 
-<button onclick="calcAdd('4')">4</button>
-<button onclick="calcAdd('5')">5</button>
-<button onclick="calcAdd('6')">6</button>
-<button onclick="calcAdd('+')">+</button>
+                <button onclick="calcAdd('4')">4</button>
+                <button onclick="calcAdd('5')">5</button>
+                <button onclick="calcAdd('6')">6</button>
+                <button onclick="calcAdd('-')">−</button>
 
-<button onclick="calcAdd('1')">1</button>
-<button onclick="calcAdd('2')">2</button>
-<button onclick="calcAdd('3')">3</button>
-<button onclick="calcResult()">=</button>
+                <button onclick="calcAdd('1')">1</button>
+                <button onclick="calcAdd('2')">2</button>
+                <button onclick="calcAdd('3')">3</button>
+                <button onclick="calcAdd('+')">+</button>
 
-<button onclick="calcAdd('0')" style="grid-column:span 2">
-0
-</button>
+                <button onclick="calcAdd('0')">0</button>
+                <button onclick="calcAdd('.')">.</button>
+                <button onclick="calcResult()" style="grid-column:span 2;">=</button>
 
-<button onclick="calcAdd('.')">.</button>
+            </div>
+        </div>
 
-</div>
-</div>
-
+    </div>
 </section>
 
+<!-- =========================
+     GAMES
+========================= -->
+<section id="games">
+    <div class="container">
 
-<!-- NUMBER GAME -->
-<section id="game">
+        <h2 class="section-title">🎮 Games</h2>
+        <div class="line"></div>
 
-<h2 class="section-title">🎮 Number Guessing Game</h2>
-<div class="line"></div>
+        <!-- NUMBER GAME -->
+        <div class="game-box">
 
-<div class="game-box">
+            <h3>🔢 Number Guessing Game</h3>
 
-<p>1 سے 100 کے درمیان نمبر guess کریں۔</p>
+            <p style="margin:15px 0;color:var(--text2);">
+                Guess a number between 1 and 100.
+            </p>
 
-<input
-type="number"
-id="guessInput"
-placeholder="Enter number"
->
+            <input
+                type="number"
+                id="guessInput"
+                placeholder="Enter your number"
+                min="1"
+                max="100"
+            >
 
-<button class="btn" onclick="guessNumber()">
-Guess
-</button>
+            <button class="btn" onclick="guessNumber()">
+                Guess
+            </button>
 
-<button class="btn" onclick="newNumberGame()">
-New Game
-</button>
+            <button class="btn" onclick="newGame()">
+                New Game
+            </button>
 
-<h3 id="gameResult"></h3>
+            <div class="result" id="guessResult">
+                Game started!
+            </div>
 
-</div>
+        </div>
 
+        <!-- TIC TAC TOE -->
+        <div class="game-box">
+
+            <h3>❌⭕ Tic-Tac-Toe</h3>
+
+            <p style="margin:15px;color:var(--text2);">
+                Player: <strong id="currentPlayer">X</strong>
+            </p>
+
+            <div class="tic-board">
+
+                <button class="tic-cell" onclick="ticPlay(0)"></button>
+                <button class="tic-cell" onclick="ticPlay(1)"></button>
+                <button class="tic-cell" onclick="ticPlay(2)"></button>
+
+                <button class="tic-cell" onclick="ticPlay(3)"></button>
+                <button class="tic-cell" onclick="ticPlay(4)"></button>
+                <button class="tic-cell" onclick="ticPlay(5)"></button>
+
+                <button class="tic-cell" onclick="ticPlay(6)"></button>
+                <button class="tic-cell" onclick="ticPlay(7)"></button>
+                <button class="tic-cell" onclick="ticPlay(8)"></button>
+
+            </div>
+
+            <div class="result" id="ticResult">
+                Your turn!
+            </div>
+
+            <button class="btn" onclick="resetTic()">
+                Reset Game
+            </button>
+
+        </div>
+
+    </div>
 </section>
 
-
-<!-- TIC TAC TOE -->
-<section id="tic">
-
-<h2 class="section-title">❌⭕ Tic-Tac-Toe</h2>
-<div class="line"></div>
-
-<div class="game-box">
-
-<h3 id="ticMessage">Player X Turn</h3>
-
-<div class="tic">
-
-<div class="cell" onclick="play(0)"></div>
-<div class="cell" onclick="play(1)"></div>
-<div class="cell" onclick="play(2)"></div>
-
-<div class="cell" onclick="play(3)"></div>
-<div class="cell" onclick="play(4)"></div>
-<div class="cell" onclick="play(5)"></div>
-
-<div class="cell" onclick="play(6)"></div>
-<div class="cell" onclick="play(7)"></div>
-<div class="cell" onclick="play(8)"></div>
-
-</div>
-
-<button class="btn" onclick="resetTic()">
-🔄 Reset Game
-</button>
-
-</div>
-
-</section>
-
-
-<!-- CONTACT -->
+<!-- =========================
+     CONTACT
+========================= -->
 <section id="contact">
+    <div class="container">
 
-<h2 class="section-title">📞 My Contact</h2>
-<div class="line"></div>
-
-<div class="contact-box">
-
-<input
-type="text"
-id="name"
-placeholder="Your Name"
->
-
-<input
-type="email"
-id="email"
-placeholder="Your Email"
->
-
-<input
-type="tel"
-id="phone"
-placeholder="Your Phone"
->
-
-<textarea
-id="message"
-placeholder="Your Message"
-></textarea>
-
-<button class="btn" onclick="sendWhatsApp()">
-💬 Send WhatsApp
-</button>
-
-</div>
-
-</section>
-
-
-<!-- SOCIAL -->
-<section id="social">
-
-<h2 class="section-title">🌐 Social Media</h2>
-<div class="line"></div>
-
-<div class="social">
-
-<a href="#" target="_blank">Facebook</a>
-<a href="#" target="_blank">YouTube</a>
-<a href="#" target="_blank">Instagram</a>
-<a href="#" target="_blank">WhatsApp</a>
-
-</div>
-
-</section>
-
-
-<!-- FOOTER -->
-<footer>
-
-<p>Subhan's Portfolio © 2026</p>
-<br>
-<p>Made with HTML, CSS & JavaScript ❤️</p>
-
-</footer>
-
-
-<button id="topBtn" onclick="topFunction()">↑</button>
-
-
-<script>
-
-/* MENU */
-function menuToggle(){
-
-    document.getElementById("menu").classList.toggle("show");
-
-}
-
-function closeMenu(){
-
-    document.getElementById("menu").classList.remove("show");
-
-}
-
-
-/* WELCOME */
-function welcome(){
-
-    alert("👋 Welcome to Subhan's Website!");
-
-}
-
-
-/* DARK MODE */
-function darkMode(){
-
-    document.body.classList.toggle("dark");
-
-    if(document.body.classList.contains("dark")){
-
-        localStorage.setItem("darkMode","on");
-
-    }else{
-
-        localStorage.setItem("darkMode","off");
-
-    }
-
-}
-
-
-/* KEEP DARK MODE */
-if(localStorage.getItem("darkMode")==="on"){
-
-    document.body.classList.add("dark");
-
-}
-
-
-/* TYPING */
-const words=[
-"I am a Web Developer.",
-"I am learning JavaScript.",
-"I love Technology.",
-"Welcome to my Website!"
-];
-
-let wordIndex=0;
-let charIndex=0;
-let deleting=false;
-
-function typing(){
-
-    let text=words[wordIndex];
-
-    if(!deleting){
-
-        charIndex++;
-
-        document.getElementById("typing").textContent=
-        text.substring(0,charIndex);
-
-        if(charIndex===text.length){
-
-            deleting=true;
-
-            setTimeout(typing,1200);
-
-            return;
-        }
-
-    }else{
-
-        charIndex--;
-
-        document.getElementById("typing").textContent=
-        text.substring(0,charIndex);
-
-        if(charIndex===0){
-
-            deleting=false;
-
-            wordIndex++;
-
-            if(wordIndex>=words.length){
-                wordIndex=0;
-            }
-
-        }
-
-    }
-
-    setTimeout(typing,deleting?50:90);
-
-}
-
-typing();
-
-
-/* CLOCK */
-function updateClock(){
-
-    const now=new Date();
-
-    let h=String(now.getHours()).padStart(2,"0");
-    let m=String(now.getMinutes()).padStart(2,"0");
-    let s=String(now.getSeconds()).padStart(2,"0");
-
-    document.getElementById("clock").textContent=
-    h+":"+m+":"+s;
-
-    document.getElementById("date").textContent=
-    now.toLocaleDateString("en-US",{
-        weekday:"long",
-        year:"numeric",
-        month:"long",
-        day:"numeric"
-    });
-
-}
-
-setInterval(updateClock,1000);
-updateClock();
-
-
-/* CALCULATOR */
-function calcAdd(value){
-
-    document.getElementById("display").value+=value;
-
-}
-
-function clearCalc(){
-
-    document.getElementById("display").value="";
-
-}
-
-function delCalc(){
-
-    let d=document.getElementById("display");
-
-    d.value=d.value.slice(0,-1);
-
-}
-
-function calcResult(){
-
-    let d=document.getElementById("display");
-
-    try{
-
-        if(d.value.trim()===""){
-            return;
-        }
-
-        d.value=Function(
-            "return "+d.value
-        )();
-
-    }catch{
-
-        d.value="Error";
-
-    }
-
-}
-
-
-/* NUMBER GAME */
-let secretNumber=
-Math.floor(Math.random()*100)+1;
-
-let tries=0;
-
-function guessNumber(){
-
-    let input=
-    Number(document.getElementById("guessInput").value);
-
-    let result=
-    document.getElementById("gameResult");
-
-    if(input<1 || input>100){
-
-        result.textContent=
-        "⚠️ 1 سے 100 کے درمیان نمبر دیں۔";
-
-        return;
-    }
-
-    tries
+        <h2 class="section-t
