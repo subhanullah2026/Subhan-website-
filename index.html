@@ -8,6 +8,32 @@
 <title>Subhan's Personal Website</title>
 
 <style>
+:root{
+  --bg:#f3f7ff;
+  --surface:#ffffff;
+  --surface2:#eef4ff;
+  --text:#172033;
+  --muted:#59657a;
+  --nav:#07152f;
+  --primary:#2455e6;
+  --cyan:#13c4ee;
+  --border:#dce5f3;
+  --shadow:0 14px 40px rgba(22,45,85,.11);
+  --danger:#d82d3f;
+  --success:#149b61;
+}
+
+body.dark{
+  --bg:#0b1220;
+  --surface:#151f31;
+  --surface2:#0f192a;
+  --text:#f5f7fb;
+  --muted:#cbd5e5;
+  --nav:#061126;
+  --border:#2a3a56;
+  --shadow:0 14px 40px rgba(0,0,0,.28);
+}
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -21,20 +47,21 @@ html{
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#f3f7ff;
-  color:#172033;
+  background:var(--bg);
+  color:var(--text);
   line-height:1.6;
   text-align:center;
-  transition:background .3s,color .3s;
+  transition:background .25s,color .25s;
   overflow-x:hidden;
 }
 
-body.dark{
-  background:#0b1220;
-  color:#f5f7fb;
+body.dark .navlinks a:hover{
+  background:rgba(255,255,255,.1);
 }
 
-button,input,textarea{
+button,
+input,
+textarea{
   font:inherit;
 }
 
@@ -46,11 +73,33 @@ a{
   color:inherit;
 }
 
-/* LOADER */
+section{
+  width:100%;
+  padding:78px 18px;
+}
+
+.section-title{
+  font-size:clamp(30px,5vw,44px);
+  color:var(--text);
+  margin-bottom:14px;
+}
+
+.section-line{
+  width:min(570px,85%);
+  height:7px;
+  margin:0 auto 48px;
+  border-radius:99px;
+  background:linear-gradient(90deg,var(--primary),var(--cyan));
+}
+
+/* =========================
+   LOADER
+========================= */
+
 #loader{
   position:fixed;
   inset:0;
-  background:#07152f;
+  background:var(--nav);
   color:#fff;
   display:flex;
   flex-direction:column;
@@ -63,6 +112,7 @@ a{
 #loader.hide{
   opacity:0;
   visibility:hidden;
+  pointer-events:none;
 }
 
 .spinner{
@@ -86,12 +136,15 @@ a{
   }
 }
 
-/* NAVIGATION */
+/* =========================
+   NAVBAR
+========================= */
+
 nav{
   position:sticky;
   top:0;
   z-index:5000;
-  background:#07152f;
+  background:var(--nav);
   box-shadow:0 8px 25px rgba(0,0,0,.15);
 }
 
@@ -134,11 +187,11 @@ nav{
 .navlinks a{
   color:#fff;
   text-decoration:none;
-  padding:9px 11px;
+  padding:9px 10px;
   border-radius:10px;
   font-size:14px;
   font-weight:700;
-  transition:background .2s,transform .2s;
+  transition:.2s;
 }
 
 .navlinks a:hover{
@@ -146,44 +199,31 @@ nav{
   transform:translateY(-1px);
 }
 
-/* SECTIONS */
-section{
-  width:100%;
-  padding:78px 18px;
-}
+/* =========================
+   HOME
+========================= */
 
-.section-title{
-  font-size:42px;
-  color:#07152f;
-  margin-bottom:14px;
-}
-
-body.dark .section-title{
-  color:#66d8ff;
-}
-
-.section-line{
-  width:min(570px,85%);
-  height:7px;
-  margin:0 auto 48px;
-  border-radius:99px;
-  background:linear-gradient(90deg,#2455e6,#13c4ee);
-}
-
-/* HERO */
 .hero{
   min-height:calc(100vh - 78px);
   display:flex;
   align-items:center;
   justify-content:center;
   background:
-    radial-gradient(circle at top left,rgba(25,189,255,.18),transparent 35%),
+    radial-gradient(
+      circle at top left,
+      rgba(25,189,255,.18),
+      transparent 35%
+    ),
     linear-gradient(135deg,#eef6ff,#fff);
 }
 
 body.dark .hero{
   background:
-    radial-gradient(circle at top left,rgba(25,189,255,.14),transparent 35%),
+    radial-gradient(
+      circle at top left,
+      rgba(25,189,255,.14),
+      transparent 35%
+    ),
     linear-gradient(135deg,#0b1220,#101c32);
 }
 
@@ -208,22 +248,32 @@ body.dark .hero{
   }
 }
 
+.photo-placeholder{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  margin:auto;
+  display:none;
+  place-items:center;
+  background:linear-gradient(135deg,#2455e6,#13c4ee);
+  color:#fff;
+  font-size:58px;
+  font-weight:900;
+  box-shadow:0 12px 35px rgba(0,0,0,.25);
+}
+
 .hero h1{
   margin:24px 0 8px;
   font-size:clamp(38px,7vw,64px);
   line-height:1.1;
-  color:#07152f;
-}
-
-body.dark .hero h1{
-  color:#fff;
+  color:var(--text);
 }
 
 .typing{
   min-height:45px;
   font-size:clamp(21px,4vw,30px);
   font-weight:800;
-  color:#1260df;
+  color:var(--primary);
 }
 
 body.dark .typing{
@@ -233,11 +283,7 @@ body.dark .typing{
 .hero-text{
   margin-top:8px;
   font-size:18px;
-  color:#526079;
-}
-
-body.dark .hero-text{
-  color:#c9d3e5;
+  color:var(--muted);
 }
 
 .hero-actions{
@@ -248,7 +294,6 @@ body.dark .hero-text{
   gap:10px;
 }
 
-/* BUTTONS */
 .btn,
 .cv-btn{
   display:inline-flex;
@@ -263,7 +308,7 @@ body.dark .hero-text{
   text-decoration:none;
   font-weight:800;
   box-shadow:0 10px 22px rgba(36,63,232,.22);
-  transition:transform .2s,box-shadow .2s;
+  transition:.2s;
 }
 
 .btn:hover,
@@ -273,37 +318,27 @@ body.dark .hero-text{
 }
 
 .btn.secondary{
-  background:#07152f;
+  background:var(--nav);
 }
 
-body.dark .btn.secondary{
-  background:#18253d;
-}
+/* =========================
+   CARDS
+========================= */
 
-/* BOXES */
 .box,
 .skills-box,
 .service-card,
 .project-card,
 .game-box,
 .tic-box,
-.contact-box{
-  background:#fff;
-  border:1px solid #dce5f3;
+.contact-box,
+.gallery-card,
+.achievement-card{
+  background:var(--surface);
+  border:1px solid var(--border);
   border-radius:24px;
-  box-shadow:0 12px 35px rgba(22,45,85,.10);
-}
-
-body.dark .box,
-body.dark .skills-box,
-body.dark .service-card,
-body.dark .project-card,
-body.dark .game-box,
-body.dark .tic-box,
-body.dark .contact-box{
-  background:#151f31;
-  border-color:#2a3a56;
-  color:#f5f7fb;
+  box-shadow:var(--shadow);
+  color:var(--text);
 }
 
 .box{
@@ -315,14 +350,9 @@ body.dark .contact-box{
 .box p{
   font-size:19px;
   margin:10px 0;
-  color:#526079;
+  color:var(--muted);
 }
 
-body.dark .box p{
-  color:#d1daea;
-}
-
-/* SKILLS */
 .skills-box{
   width:min(760px,100%);
   margin:auto;
@@ -345,25 +375,20 @@ body.dark .box p{
 .skillbar{
   height:17px;
   border-radius:99px;
-  background:#e5ebf4;
+  background:var(--surface2);
   overflow:hidden;
-}
-
-body.dark .skillbar{
-  background:#2d3b52;
 }
 
 .progress{
   width:0;
   height:100%;
   border-radius:99px;
-  background:linear-gradient(90deg,#2455e6,#13c4ee);
+  background:linear-gradient(90deg,var(--primary),var(--cyan));
   transition:width 1.2s ease;
 }
 
-/* CARDS */
 .grid{
-  width:min(1050px,100%);
+  width:min(1100px,100%);
   margin:auto;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
@@ -371,13 +396,17 @@ body.dark .skillbar{
 }
 
 .service-card,
-.project-card{
+.project-card,
+.gallery-card,
+.achievement-card{
   padding:30px 22px;
-  transition:transform .25s,box-shadow .25s;
+  transition:.25s;
 }
 
 .service-card:hover,
-.project-card:hover{
+.project-card:hover,
+.gallery-card:hover,
+.achievement-card:hover{
   transform:translateY(-7px);
   box-shadow:0 18px 38px rgba(22,45,85,.16);
 }
@@ -388,35 +417,37 @@ body.dark .skillbar{
 }
 
 .service-card h3,
-.project-card h3{
-  color:#123ed0;
+.project-card h3,
+.achievement-card h3{
+  color:var(--primary);
   font-size:22px;
   margin-bottom:9px;
 }
 
 body.dark .service-card h3,
-body.dark .project-card h3{
+body.dark .project-card h3,
+body.dark .achievement-card h3{
   color:#66d8ff;
 }
 
 .service-card p,
-.project-card p{
-  color:#59657a;
+.project-card p,
+.achievement-card p,
+.gallery-card p{
+  color:var(--muted);
   font-size:16px;
 }
 
-body.dark .service-card p,
-body.dark .project-card p{
-  color:#ccd5e5;
-}
+/* =========================
+   CLOCK
+========================= */
 
-/* CLOCK */
 .clock-box{
   width:min(600px,100%);
   margin:auto;
   padding:35px 18px;
   border-radius:28px;
-  background:#07152f;
+  background:var(--nav);
   color:#fff;
   box-shadow:0 16px 40px rgba(7,21,47,.28);
 }
@@ -434,9 +465,12 @@ body.dark .project-card p{
   color:#dbe8ff;
 }
 
-/* CALCULATOR */
+/* =========================
+   CALCULATOR
+========================= */
+
 .calculator{
-  width:min(380px,100%);
+  width:min(390px,100%);
   margin:auto;
   padding:20px;
   border-radius:25px;
@@ -474,10 +508,6 @@ body.dark .project-card p{
   font-size:19px;
 }
 
-.calc-grid button:hover{
-  filter:brightness(1.15);
-}
-
 .calc-grid .operator{
   background:#2455e6;
 }
@@ -490,7 +520,10 @@ body.dark .project-card p{
   background:#139b62;
 }
 
-/* NUMBER GAME */
+/* =========================
+   GAMES
+========================= */
+
 .game-box,
 .tic-box{
   width:min(620px,100%);
@@ -501,34 +534,40 @@ body.dark .project-card p{
 .game-box input{
   width:min(300px,90%);
   padding:14px;
-  border:2px solid #d5deed;
+  border:2px solid var(--border);
   border-radius:12px;
   outline:0;
   text-align:center;
   font-size:18px;
   margin:10px 0;
-}
-
-body.dark .game-box input{
-  background:#0e1727;
-  color:#fff;
-  border-color:#344761;
+  background:var(--surface);
+  color:var(--text);
 }
 
 .game-result,
-.tic-result{
+.tic-result,
+.form-result{
   min-height:34px;
   margin-top:12px;
   font-weight:800;
-  color:#123ed0;
+  color:var(--primary);
 }
 
 body.dark .game-result,
-body.dark .tic-result{
+body.dark .tic-result,
+body.dark .form-result{
   color:#66d8ff;
 }
 
-/* TIC TAC TOE */
+.small-btn{
+  border:0;
+  border-radius:12px;
+  padding:11px 18px;
+  background:var(--primary);
+  color:#fff;
+  font-weight:800;
+}
+
 .board{
   width:min(340px,100%);
   margin:22px auto;
@@ -541,20 +580,17 @@ body.dark .tic-result{
   aspect-ratio:1;
   border:2px solid #2455e6;
   border-radius:14px;
-  background:#edf3ff;
-  color:#123ed0;
+  background:var(--surface2);
+  color:var(--primary);
   font-size:clamp(38px,10vw,58px);
   font-weight:900;
   margin:0;
 }
 
-body.dark .cell{
-  background:#0d1728;
-  color:#66d8ff;
-  border-color:#4c78ff;
-}
+/* =========================
+   CONTACT
+========================= */
 
-/* CONTACT */
 .contact-box{
   width:min(700px,100%);
   margin:auto;
@@ -566,11 +602,11 @@ body.dark .cell{
   width:100%;
   padding:14px;
   margin:7px 0;
-  border:2px solid #d5deed;
+  border:2px solid var(--border);
   border-radius:12px;
   outline:0;
-  background:#fff;
-  color:#172033;
+  background:var(--surface);
+  color:var(--text);
   font-size:16px;
 }
 
@@ -579,22 +615,9 @@ body.dark .cell{
   resize:vertical;
 }
 
-body.dark .contact-box input,
-body.dark .contact-box textarea{
-  background:#0e1727;
-  color:#fff;
-  border-color:#344761;
-}
-
 .contact-box input:focus,
 .contact-box textarea:focus{
-  border-color:#2455e6;
-}
-
-.form-result{
-  min-height:28px;
-  margin-top:8px;
-  font-weight:700;
+  border-color:var(--primary);
 }
 
 .whatsapp{
@@ -608,9 +631,12 @@ body.dark .contact-box textarea{
   font-weight:800;
 }
 
-/* SOCIAL */
+/* =========================
+   SOCIAL
+========================= */
+
 .social{
-  width:min(800px,100%);
+  width:min(900px,100%);
   margin:auto;
   display:flex;
   justify-content:center;
@@ -621,20 +647,42 @@ body.dark .contact-box textarea{
 .social a{
   padding:12px 18px;
   border-radius:13px;
-  background:#07152f;
+  background:var(--nav);
   color:#fff;
   text-decoration:none;
   font-weight:800;
 }
 
-body.dark .social a{
-  background:#1c2a43;
+/* =========================
+   GALLERY
+========================= */
+
+.gallery-card{
+  overflow:hidden;
+  padding:0;
 }
 
-/* FOOTER */
+.gallery-card .gallery-icon{
+  font-size:76px;
+  padding:35px 15px;
+  background:linear-gradient(135deg,#e9f1ff,#d8fbff);
+}
+
+/* =========================
+   ACHIEVEMENTS
+========================= */
+
+.achievement-card{
+  min-height:180px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
   padding:32px 18px;
-  background:#07152f;
+  background:var(--nav);
   color:#fff;
 }
 
@@ -643,7 +691,10 @@ footer p{
   margin:5px 0;
 }
 
-/* TOAST */
+/* =========================
+   TOAST
+========================= */
+
 #toast{
   position:fixed;
   left:50%;
@@ -665,7 +716,6 @@ footer p{
   transform:translate(-50%,0);
 }
 
-/* TOP BUTTON */
 #top{
   position:fixed;
   right:18px;
@@ -682,12 +732,16 @@ footer p{
   z-index:4000;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:800px){
 
   .navbar{
     min-height:72px;
     padding:10px 15px;
+    flex-wrap:wrap;
   }
 
   .logo{
@@ -714,16 +768,8 @@ footer p{
     padding:11px;
   }
 
-  .navbar{
-    flex-wrap:wrap;
-  }
-
   section{
     padding:65px 15px;
-  }
-
-  .section-title{
-    font-size:34px;
   }
 
   .box,
@@ -734,7 +780,8 @@ footer p{
     padding:26px 18px;
   }
 
-  .profile{
+  .profile,
+  .photo-placeholder{
     width:145px;
     height:145px;
   }
@@ -791,17 +838,21 @@ footer p{
   }
 }
 </style>
-</head>
+  </head>
+  <body>
 
-<body>
-
-<!-- LOADER -->
+<!-- =========================
+     LOADER
+========================= -->
 <div id="loader">
   <div class="spinner"></div>
   <p>Loading Subhan's Website...</p>
 </div>
 
-<!-- NAVIGATION -->
+
+<!-- =========================
+     NAVIGATION
+========================= -->
 <nav>
   <div class="navbar">
 
@@ -834,7 +885,10 @@ footer p{
   </div>
 </nav>
 
-<!-- HOME -->
+
+<!-- =========================
+     HOME
+========================= -->
 <section id="home" class="hero">
 
   <div class="hero-content">
@@ -847,7 +901,7 @@ footer p{
 
     <p
       id="photoNote"
-      style="display:none;margin:10px 0;color:#d82d3f;font-weight:700">
+      style="display:none;margin:10px 0;color:#d82d3f;font-weight:700;">
       Photo not found. Put <b>AA.jpg</b> beside index.html.
     </p>
 
@@ -859,8 +913,13 @@ footer p{
       aria-live="polite">
     </div>
 
-    <p class="hero-text">My name is Subhan.</p>
-    <p class="hero-text">I am learning Web Development.</p>
+    <p class="hero-text">
+      My name is Subhan.
+    </p>
+
+    <p class="hero-text">
+      I am learning Web Development.
+    </p>
 
     <div class="hero-actions">
 
@@ -891,10 +950,16 @@ footer p{
 
 </section>
 
-<!-- ABOUT -->
+
+<!-- =========================
+     ABOUT
+========================= -->
 <section id="about">
 
-  <h2 class="section-title">👨‍💻 About Me</h2>
+  <h2 class="section-title">
+    👨‍💻 About Me
+  </h2>
+
   <div class="section-line"></div>
 
   <div class="box">
@@ -915,10 +980,16 @@ footer p{
 
 </section>
 
-<!-- SKILLS -->
+
+<!-- =========================
+     SKILLS
+========================= -->
 <section id="skills">
 
-  <h2 class="section-title">📊 My Skills</h2>
+  <h2 class="section-title">
+    📊 My Skills
+  </h2>
+
   <div class="section-line"></div>
 
   <div class="skills-box">
@@ -939,6 +1010,7 @@ footer p{
 
     </div>
 
+
     <div class="skill">
 
       <div class="skill-head">
@@ -955,6 +1027,7 @@ footer p{
 
     </div>
 
+
     <div class="skill">
 
       <div class="skill-head">
@@ -970,6 +1043,7 @@ footer p{
       </div>
 
     </div>
+
 
     <div class="skill">
 
@@ -991,10 +1065,16 @@ footer p{
 
 </section>
 
-<!-- SERVICES -->
+
+<!-- =========================
+     SERVICES
+========================= -->
 <section id="services">
 
-  <h2 class="section-title">🛠️ My Services</h2>
+  <h2 class="section-title">
+    🛠️ My Services
+  </h2>
+
   <div class="section-line"></div>
 
   <div class="grid">
@@ -1002,47 +1082,70 @@ footer p{
     <div class="service-card">
       <div class="icon">🌐</div>
       <h3>Website Development</h3>
-      <p>Simple, modern and responsive websites.</p>
+      <p>
+        Simple, modern and responsive websites.
+      </p>
     </div>
+
 
     <div class="service-card">
       <div class="icon">🎨</div>
       <h3>Website Design</h3>
-      <p>Clean designs for mobile, tablet and desktop.</p>
+      <p>
+        Clean designs for mobile, tablet and desktop.
+      </p>
     </div>
+
 
     <div class="service-card">
       <div class="icon">💻</div>
       <h3>HTML &amp; CSS</h3>
-      <p>Modern web pages using HTML and CSS.</p>
+      <p>
+        Modern web pages using HTML and CSS.
+      </p>
     </div>
+
 
     <div class="service-card">
       <div class="icon">⚡</div>
       <h3>JavaScript</h3>
-      <p>Interactive buttons, forms, calculators and features.</p>
+      <p>
+        Interactive buttons, forms, calculators and features.
+      </p>
     </div>
+
 
     <div class="service-card">
       <div class="icon">📱</div>
       <h3>Responsive Website</h3>
-      <p>Layouts that work properly on phones and computers.</p>
+      <p>
+        Layouts that work properly on phones and computers.
+      </p>
     </div>
+
 
     <div class="service-card">
       <div class="icon">🔧</div>
       <h3>Website Updates</h3>
-      <p>Adding sections, changing text and improving design.</p>
+      <p>
+        Adding sections, changing text and improving design.
+      </p>
     </div>
 
   </div>
 
 </section>
 
-<!-- PROJECTS -->
+
+<!-- =========================
+     PROJECTS
+========================= -->
 <section id="projects">
 
-  <h2 class="section-title">🖼️ My Projects</h2>
+  <h2 class="section-title">
+    🖼️ My Projects
+  </h2>
+
   <div class="section-line"></div>
 
   <div class="grid">
@@ -1050,32 +1153,47 @@ footer p{
     <div class="project-card">
       <div class="icon">🌐</div>
       <h3>Personal Website</h3>
-      <p>My complete personal portfolio website.</p>
+      <p>
+        My complete personal portfolio website.
+      </p>
     </div>
+
 
     <div class="project-card">
       <div class="icon">🧮</div>
       <h3>Calculator</h3>
-      <p>A working calculator with keyboard support.</p>
+      <p>
+        A working calculator with keyboard support.
+      </p>
     </div>
+
 
     <div class="project-card">
       <div class="icon">🎮</div>
       <h3>Number Game</h3>
-      <p>Guess the hidden number from 1 to 100.</p>
+      <p>
+        Guess the hidden number from 1 to 100.
+      </p>
     </div>
+
 
     <div class="project-card">
       <div class="icon">⭕❌</div>
       <h3>Tic-Tac-Toe</h3>
-      <p>Two-player Tic-Tac-Toe game.</p>
+      <p>
+        Two-player Tic-Tac-Toe game.
+      </p>
     </div>
+
 
     <div class="project-card">
       <div class="icon">⏰</div>
       <h3>Live Clock</h3>
-      <p>Real-time digital clock and date.</p>
+      <p>
+        Real-time digital clock and date.
+      </p>
     </div>
+
 
     <div class="project-card">
       <div class="icon">📱</div>
@@ -1089,10 +1207,16 @@ footer p{
 
 </section>
 
-<!-- CLOCK -->
+
+<!-- =========================
+     CLOCK
+========================= -->
 <section id="clockSection">
 
-  <h2 class="section-title">⏰ Live Digital Clock</h2>
+  <h2 class="section-title">
+    ⏰ Live Digital Clock
+  </h2>
+
   <div class="section-line"></div>
 
   <div class="clock-box">
@@ -1109,10 +1233,16 @@ footer p{
 
 </section>
 
-<!-- CALCULATOR -->
+
+<!-- =========================
+     CALCULATOR
+========================= -->
 <section id="calculator">
 
-  <h2 class="section-title">🧮 Calculator</h2>
+  <h2 class="section-title">
+    🧮 Calculator
+  </h2>
+
   <div class="section-line"></div>
 
   <div class="calculator">
@@ -1154,6 +1284,7 @@ footer p{
         )
       </button>
 
+
       <button
         type="button"
         onclick="calcAdd('7')">
@@ -1178,6 +1309,7 @@ footer p{
         onclick="calcAdd('/')">
         ÷
       </button>
+
 
       <button
         type="button"
@@ -1204,6 +1336,7 @@ footer p{
         ×
       </button>
 
+
       <button
         type="button"
         onclick="calcAdd('1')">
@@ -1229,6 +1362,7 @@ footer p{
         −
       </button>
 
+
       <button
         type="button"
         onclick="calcAdd('0')">
@@ -1237,4 +1371,1661 @@ footer p{
 
       <button
         type="button"
-        onclic
+        onclick="calcAdd('.')">
+        .
+      </button>
+
+      <button
+        class="operator"
+        type="button"
+        onclick="calcAdd('+')">
+        +
+      </button>
+
+      <button
+        class="equal"
+        type="button"
+        onclick="calcResult()">
+        =
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     NUMBER GUESSING GAME
+========================= -->
+<section id="game">
+
+  <h2 class="section-title">
+    🎮 Number Guessing Game
+  </h2>
+
+  <div class="section-line"></div>
+
+  <div class="game-box">
+
+    <p>
+      Guess a number between 1 and 100.
+    </p>
+
+    <input
+      id="guess"
+      type="number"
+      min="1"
+      max="100"
+      placeholder="Enter number">
+
+    <br>
+
+    <button
+      class="btn"
+      type="button"
+      onclick="guessNumber()">
+      Guess
+    </button>
+
+    <button
+      class="btn"
+      type="button"
+      onclick="newNumberGame()">
+      New Game
+    </button>
+
+    <p
+      id="gameResult"
+      class="game-result">
+      🎮 Enter your guess.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     TIC TAC TOE
+========================= -->
+<section id="tictactoe">
+
+  <h2 class="section-title">
+    ⭕❌ Tic-Tac-Toe
+  </h2>
+
+  <div class="section-line"></div>
+
+  <div class="tic-box">
+
+    <p
+      id="ticResult"
+      class="tic-result">
+      Player X's Turn
+    </p>
+
+    <div class="board">
+
+      <button class="cell" type="button" onclick="play(0)"></button>
+      <button class="cell" type="button" onclick="play(1)"></button>
+      <button class="cell" type="button" onclick="play(2)"></button>
+
+      <button class="cell" type="button" onclick="play(3)"></button>
+      <button class="cell" type="button" onclick="play(4)"></button>
+      <button class="cell" type="button" onclick="play(5)"></button>
+
+      <button class="cell" type="button" onclick="play(6)"></button>
+      <button class="cell" type="button" onclick="play(7)"></button>
+      <button class="cell" type="button" onclick="play(8)"></button>
+
+    </div>
+
+    <button
+      class="btn"
+      type="button"
+      onclick="resetTic()">
+      🔄 New Game
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+<section id="contact">
+
+  <h2 class="section-title">
+    📱 Contact Me
+  </h2>
+
+  <div class="section-line"></div>
+
+  <div class="contact-box">
+
+    <p>
+      Send me a message on WhatsApp.
+    </p>
+
+    <input
+      id="name"
+      type="text"
+      placeholder="Your Name"
+      autocomplete="name">
+
+    <input
+      id="email"
+      type="email"
+      placeholder="Your Email"
+      autocomplete="email">
+
+    <input
+      id="phone"
+      type="tel"
+      placeholder="Your Phone Number"
+      autocomplete="tel">
+
+    <textarea
+      id="message"
+      placeholder="Write your message..."></textarea>
+
+    <button
+      class="btn"
+      type="button"
+      onclick="sendWhatsApp()">
+      📲 Send on WhatsApp
+    </button>
+
+    <p
+      id="formResult"
+      class="form-result">
+    </p>
+
+    <a
+      class="whatsapp"
+      href="https://wa.me/923226503158"
+      target="_blank"
+      rel="noopener">
+      💬 WhatsApp Me
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     SOCIAL MEDIA
+========================= -->
+<section>
+
+  <h2 class="section-title">
+    🔗 Social Media
+  </h2>
+
+  <div class="section-line"></div>
+
+  <div class="social">
+
+    <a href="#contact">
+      Facebook
+    </a>
+
+    <a href="#contact">
+      YouTube
+    </a>
+
+    <a href="#contact">
+      Instagram
+    </a>
+
+    <a href="https://wa.me/923226503158"
+       target="_blank"
+       rel="noopener">
+      WhatsApp
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer>
+
+  <p>
+    Subhan's Portfolio © 2026
+  </p>
+
+  <p>
+    Made with HTML, CSS & JavaScript ❤️
+  </p>
+
+</footer>
+
+
+<!-- =========================
+     TOAST
+========================= -->
+<div id="toast">
+  Hello!
+</div>
+
+
+<!-- =========================
+     TOP BUTTON
+========================= -->
+<button
+  id="top"
+  type="button"
+  onclick="goTop()"
+  aria-label="Go to top">
+  ↑
+</button>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+<script>
+
+/* =========================
+   LOADER
+========================= */
+
+window.addEventListener("load", function(){
+
+  setTimeout(function(){
+
+    var loader = document.getElementById("loader");
+
+    if(loader){
+      loader.classList.add("hide");
+    }
+
+    document.querySelectorAll(".progress").forEach(function(bar){
+
+      bar.style.width = bar.dataset.width || "0%";
+
+    });
+
+  }, 1000);
+
+});
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+function menuToggle(){
+
+  var nav = document.getElementById("navlinks");
+  var btn = document.querySelector(".menu-btn");
+
+  if(!nav) return;
+
+  nav.classList.toggle("show");
+
+  if(btn){
+
+    var opened = nav.classList.contains("show");
+
+    btn.setAttribute(
+      "aria-expanded",
+      opened ? "true" : "false"
+    );
+
+    btn.setAttribute(
+      "aria-label",
+      opened ? "Close menu" : "Open menu"
+    );
+
+  }
+
+}
+
+
+function closeMenu(){
+
+  var nav = document.getElementById("navlinks");
+  var btn = document.querySelector(".menu-btn");
+
+  if(nav){
+    nav.classList.remove("show");
+  }
+
+  if(btn){
+    btn.setAttribute("aria-expanded","false");
+    btn.setAttribute("aria-label","Open menu");
+  }
+
+}
+
+
+/* =========================
+   TYPING EFFECT
+========================= */
+
+var words = [
+
+  "I am a Web Developer.",
+  "I am learning JavaScript.",
+  "I love Technology.",
+  "Welcome to my Website!"
+
+];
+
+var wordIndex = 0;
+var charIndex = 0;
+var deleting = false;
+
+
+function typing(){
+
+  var element = document.getElementById("typing");
+
+  if(!element) return;
+
+  var text = words[wordIndex];
+
+  if(!deleting){
+
+    element.textContent =
+      text.substring(0, charIndex + 1);
+
+    charIndex++;
+
+    if(charIndex === text.length){
+
+      deleting = true;
+
+      setTimeout(typing, 1200);
+
+      return;
+    }
+
+  }else{
+
+    element.textContent =
+      text.substring(0, charIndex - 1);
+
+    charIndex--;
+
+    if(charIndex === 0){
+
+      deleting = false;
+
+      wordIndex++;
+
+      if(wordIndex >= words.length){
+
+        wordIndex = 0;
+
+      }
+
+    }
+
+  }
+
+  setTimeout(
+    typing,
+    deleting ? 50 : 100
+  );
+
+}
+
+typing();
+
+
+/* =========================
+   TOAST
+========================= */
+
+var toastTimer;
+
+
+function toast(message){
+
+  var toastBox =
+    document.getElementById("toast");
+
+  if(!toastBox) return;
+
+  toastBox.textContent = message;
+
+  toastBox.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(function(){
+
+    toastBox.classList.remove("show");
+
+  }, 2500);
+
+}
+
+
+/* =========================
+   WELCOME
+========================= */
+
+function welcome(){
+
+  toast("👋 Welcome to Subhan's Website!");
+
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+function darkMode(){
+
+  document.body.classList.toggle("dark");
+
+  var enabled =
+    document.body.classList.contains("dark");
+
+  localStorage.setItem(
+    "subhanDarkMode",
+    enabled ? "on" : "off"
+  );
+
+  toast(
+    enabled
+      ? "🌙 Dark Mode ON"
+      : "☀️ Light Mode ON"
+  );
+
+}
+
+
+/* KEEP DARK MODE */
+
+if(localStorage.getItem("subhanDarkMode") === "on"){
+
+  document.body.classList.add("dark");
+
+}
+
+
+/* =========================
+   CLOCK
+========================= */
+
+function updateClock(){
+
+  var clock =
+    document.getElementById("clock");
+
+  var date =
+    document.getElementById("date");
+
+  if(!clock || !date) return;
+
+  var now = new Date();
+
+  var h = String(
+    now.getHours()
+  ).padStart(2,"0");
+
+  var m = String(
+    now.getMinutes()
+  ).padStart(2,"0");
+
+  var s = String(
+    now.getSeconds()
+  ).padStart(2,"0");
+
+  clock.textContent =
+    h + ":" + m + ":" + s;
+
+
+  var days = [
+
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+
+  ];
+
+
+  var months = [
+
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+
+  ];
+
+
+  date.textContent =
+    days[now.getDay()] +
+    ", " +
+    now.getDate() +
+    " " +
+    months[now.getMonth()] +
+    " " +
+    now.getFullYear();
+
+}
+
+updateClock();
+
+setInterval(updateClock, 1000);
+
+
+/* =========================
+   CALCULATOR
+========================= */
+
+function calcAdd(value){
+
+  var display =
+    document.getElementById("display");
+
+  if(!display) return;
+
+  if(display.value === "Error"){
+
+    display.value = "";
+
+  }
+
+  display.value += value;
+
+}
+
+
+function clearCalc(){
+
+  var display =
+    document.getElementById("display");
+
+  if(display){
+
+    display.value = "";
+
+  }
+
+}
+
+
+function delCalc(){
+
+  var display =
+    document.getElementById("display");
+
+  if(display){
+
+    display.value =
+      display.value.slice(0,-1);
+
+  }
+
+}
+
+
+function calcResult(){
+
+  var display =
+    document.getElementById("display");
+
+  if(!display) return;
+
+  var expression =
+    display.value.trim();
+
+  if(expression === ""){
+
+    return;
+
+  }
+
+
+  /*
+    صرف calculator کے allowed characters
+    قبول کیے جائیں گے۔
+  */
+
+  if(!/^[0-9+\-*/().% ]+$/.test(expression)){
+
+    display.value = "Error";
+
+    return;
+
+  }
+
+
+  try{
+
+    var result =
+      Function(
+        '"use strict"; return (' +
+        expression +
+        ')'
+      )();
+
+    if(
+      typeof result !== "number" ||
+      !Number.isFinite(result)
+    ){
+
+      throw new Error("Invalid result");
+
+    }
+
+    display.value = result;
+
+  }catch(error){
+
+    display.value = "Error";
+
+  }
+
+}
+
+
+/* Calculator keyboard support */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    var active =
+      document.activeElement;
+
+    var isTyping =
+      active &&
+      (
+        active.tagName === "INPUT" ||
+        active.tagName === "TEXTAREA"
+      );
+
+    if(isTyping) return;
+
+
+    var key = event.key;
+
+    if(
+      /^[0-9+\-*/().%]$/.test(key)
+    ){
+
+      calcAdd(key);
+
+      event.preventDefault();
+
+    }
+
+
+    if(key === "Enter"){
+
+      calcResult();
+
+      event.preventDefault();
+
+    }
+
+
+    if(key === "Backspace"){
+
+      delCalc();
+
+      event.preventDefault();
+
+    }
+
+
+    if(key === "Escape"){
+
+      clearCalc();
+
+      event.preventDefault();
+
+    }
+
+  }
+);
+
+
+/* =========================
+   NUMBER GUESSING GAME
+========================= */
+
+var secret =
+  Math.floor(Math.random() * 100) + 1;
+
+var tries = 0;
+
+var numberGameFinished = false;
+
+
+function guessNumber(){
+
+  var input =
+    document.getElementById("guess");
+
+  var result =
+        var result =
+          document.getElementById("gameResult");
+
+        if (numberGameFinished) {
+          result.innerHTML =
+            "🏁 Game finished! Click New Game.";
+          return;
+        }
+
+        var value = Number(input.value);
+
+        if (!Number.isInteger(value) || value < 1 || value > 100) {
+          result.innerHTML =
+            "❌ Please enter a whole number from 1 to 100.";
+          return;
+        }
+
+        tries++;
+
+        if (value === secret) {
+
+          numberGameFinished = true;
+
+          result.innerHTML =
+            "🎉 Correct! You won in " +
+            tries +
+            " attempts!";
+
+          toast("🎉 Congratulations! You Won!");
+
+          input.disabled = true;
+
+        } else if (value < secret) {
+
+          result.innerHTML =
+            "⬆️ Too low! Try a higher number.";
+
+        } else {
+
+          result.innerHTML =
+            "⬇️ Too high! Try a lower number.";
+
+        }
+
+        input.value = "";
+        input.focus();
+
+      }
+
+
+      function newNumberGame() {
+
+        secret =
+          Math.floor(Math.random() * 100) + 1;
+
+        tries = 0;
+
+        numberGameFinished = false;
+
+        var input =
+          document.getElementById("guess");
+
+        var result =
+          document.getElementById("gameResult");
+
+        input.value = "";
+        input.disabled = false;
+
+        result.innerHTML =
+          "🎮 New game started! Guess a number from 1 to 100.";
+
+        input.focus();
+
+      }
+
+
+
+      /* =========================
+         TIC TAC TOE
+      ========================= */
+
+      var tic = [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ];
+
+      var player = "X";
+
+      var finished = false;
+
+
+
+      function play(index) {
+
+        if (tic[index] !== "" || finished) {
+          return;
+        }
+
+        tic[index] = player;
+
+        var cells =
+          document.getElementsByClassName("cell");
+
+        cells[index].textContent = player;
+
+
+        if (winner()) {
+
+          document.getElementById("ticResult").textContent =
+            "🎉 Player " + player + " Wins!";
+
+          toast(
+            "🎉 Player " + player + " Wins!"
+          );
+
+          finished = true;
+
+          return;
+        }
+
+
+        if (!tic.includes("")) {
+
+          document.getElementById("ticResult").textContent =
+            "🤝 It's a Draw!";
+
+          toast("🤝 Game Draw!");
+
+          finished = true;
+
+          return;
+        }
+
+
+        player =
+          player === "X"
+            ? "O"
+            : "X";
+
+
+        document.getElementById("ticResult").textContent =
+          "Player " + player + "'s Turn";
+
+      }
+
+
+
+      function winner() {
+
+        var combinations = [
+
+          [0, 1, 2],
+
+          [3, 4, 5],
+
+          [6, 7, 8],
+
+          [0, 3, 6],
+
+          [1, 4, 7],
+
+          [2, 5, 8],
+
+          [0, 4, 8],
+
+          [2, 4, 6]
+
+        ];
+
+
+        for (
+          var i = 0;
+          i < combinations.length;
+          i++
+        ) {
+
+          var a =
+            combinations[i][0];
+
+          var b =
+            combinations[i][1];
+
+          var c =
+            combinations[i][2];
+
+
+          if (
+            tic[a] !== "" &&
+            tic[a] === tic[b] &&
+            tic[a] === tic[c]
+          ) {
+
+            return true;
+
+          }
+
+        }
+
+        return false;
+
+      }
+
+
+
+      function resetTic() {
+
+        tic = [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ];
+
+        player = "X";
+
+        finished = false;
+
+
+        var cells =
+          document.getElementsByClassName("cell");
+
+
+        for (
+          var i = 0;
+          i < cells.length;
+          i++
+        ) {
+
+          cells[i].textContent = "";
+
+        }
+
+
+        document.getElementById("ticResult").textContent =
+          "Player X's Turn";
+
+      }
+
+
+
+      /* =========================
+         WHATSAPP CONTACT
+      ========================= */
+
+      function sendWhatsApp() {
+
+        var name =
+          document
+            .getElementById("name")
+            .value
+            .trim();
+
+
+        var email =
+          document
+            .getElementById("email")
+            .value
+            .trim();
+
+
+        var phone =
+          document
+            .getElementById("phone")
+            .value
+            .trim();
+
+
+        var message =
+          document
+            .getElementById("message")
+            .value
+            .trim();
+
+
+        var formResult =
+          document.getElementById("formResult");
+
+
+        if (name === "") {
+
+          formResult.textContent =
+            "❌ Please enter your name.";
+
+          return;
+
+        }
+
+
+        if (email === "") {
+
+          formResult.textContent =
+            "❌ Please enter your email.";
+
+          return;
+
+        }
+
+
+        if (message === "") {
+
+          formResult.textContent =
+            "❌ Please write your message.";
+
+          return;
+
+        }
+
+
+        var text =
+          "Hello!%0A%0A" +
+
+          "Name: " +
+          encodeURIComponent(name) +
+
+          "%0AEmail: " +
+          encodeURIComponent(email) +
+
+          "%0APhone: " +
+          encodeURIComponent(phone) +
+
+          "%0AMessage: " +
+          encodeURIComponent(message);
+
+
+        /*
+          اپنا WhatsApp نمبر یہاں لکھو۔
+
+          مثال:
+          923XXXXXXXXX
+
+          + نشان نہ لگانا۔
+        */
+
+        var whatsappNumber =
+          "923226503158";
+
+
+        var whatsappURL =
+          "https://wa.me/" +
+          whatsappNumber +
+          "?text=" +
+          text;
+
+
+        formResult.textContent =
+          "✅ Opening WhatsApp...";
+
+
+        window.open(
+          whatsappURL,
+          "_blank"
+        );
+
+      }
+
+
+
+      /* =========================
+         TOP BUTTON
+      ========================= */
+
+      var topButton =
+        document.getElementById("top");
+
+
+      window.addEventListener(
+        "scroll",
+        function () {
+
+          if (window.scrollY > 500) {
+
+            topButton.style.display =
+              "block";
+
+          } else {
+
+            topButton.style.display =
+              "none";
+
+          }
+
+        }
+      );
+
+
+
+      function goTop() {
+
+        window.scrollTo({
+
+          top: 0,
+
+          behavior: "smooth"
+
+        });
+
+      }
+
+
+
+      /* =========================
+         MENU CLOSE AFTER CLICK
+      ========================= */
+
+      function closeMenu() {
+
+        var nav =
+          document.getElementById("navlinks");
+
+        if (nav) {
+
+          nav.classList.remove("show");
+
+        }
+
+      }
+
+
+      document
+        .querySelectorAll(".navlinks a")
+        .forEach(function (link) {
+
+          link.addEventListener(
+            "click",
+            closeMenu
+          );
+
+        });
+
+
+
+      /* =========================
+         MENU ACCESSIBILITY
+      ========================= */
+
+      var menuButton =
+        document.querySelector(".menu-btn");
+
+
+      var navigation =
+        document.getElementById("navlinks");
+
+
+      if (menuButton && navigation) {
+
+        menuButton.addEventListener(
+          "click",
+          function () {
+
+            var isOpen =
+              navigation.classList.contains("show");
+
+            menuButton.setAttribute(
+              "aria-expanded",
+              String(!isOpen)
+            );
+
+          }
+        );
+
+      }
+
+
+
+      /* =========================
+         KEYBOARD CALCULATOR
+      ========================= */
+
+      document.addEventListener(
+        "keydown",
+        function (event) {
+
+          var active =
+            document.activeElement;
+
+
+          /*
+            Calculator keyboard support
+            صرف calculator کے باہر
+            normal typing کو disturb نہیں کرے گا۔
+          */
+
+          if (
+            active &&
+            (
+              active.tagName === "INPUT" ||
+              active.tagName === "TEXTAREA"
+            )
+          ) {
+
+            return;
+
+          }
+
+
+          var key = event.key;
+
+
+          if (
+            /[0-9+\-*/.%]/.test(key)
+          ) {
+
+            var display =
+              document.getElementById("display");
+
+
+            if (display) {
+
+              display.value += key;
+
+            }
+
+          }
+
+
+          if (key === "Enter") {
+
+            var display =
+              document.getElementById("display");
+
+
+            if (
+              display &&
+              display.value !== ""
+            ) {
+
+              calcResult();
+
+            }
+
+          }
+
+
+          if (key === "Backspace") {
+
+            delCalc();
+
+          }
+
+
+          if (key === "Escape") {
+
+            clearCalc();
+
+          }
+
+        }
+      );
+
+
+
+      /* =========================
+         CALCULATOR SAFETY
+      ========================= */
+
+      function safeCalculatorResult() {
+
+        var display =
+          document.getElementById("display");
+
+
+        if (!display) {
+          return;
+        }
+
+
+        var expression =
+          display.value.trim();
+
+
+        if (expression === "") {
+          return;
+        }
+
+
+        /*
+          صرف numbers اور calculator
+          operators allow کیے جا رہے ہیں۔
+        */
+
+        if (
+          !/^[0-9+\-*/%.() ]+$/.test(
+            expression
+          )
+        ) {
+
+          display.value =
+            "Error";
+
+          return;
+
+        }
+
+
+        try {
+
+          var answer =
+            Function(
+              '"use strict"; return (' +
+              expression +
+              ')'
+            )();
+
+
+          if (
+            typeof answer !== "number" ||
+            !Number.isFinite(answer)
+          ) {
+
+            display.value =
+              "Error";
+
+            return;
+
+          }
+
+
+          display.value =
+            String(answer);
+
+        } catch (error) {
+
+          display.value =
+            "Error";
+
+        }
+
+      }
+
+
+
+      /* =========================
+         INITIALIZE GAMES
+      ========================= */
+
+      newNumberGame();
+
+      resetTic();
+
+
+
+      /* =========================
+         PAGE READY
+      ========================= */
+
+      document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+          /*
+            Progress bars
+          */
+
+          document
+            .querySelectorAll(".progress")
+            .forEach(function (bar) {
+
+              var width =
+                bar.getAttribute("data-width");
+
+              if (width) {
+
+                setTimeout(
+                  function () {
+
+                    bar.style.width =
+                      width;
+
+                  },
+                  300
+                );
+
+              }
+
+            });
+
+        }
+      );
+
+
+
+      /* =========================
+         IMAGE FALLBACK
+      ========================= */
+
+      var profileImage =
+        document.querySelector(".profile");
+
+
+      if (profileImage) {
+
+        profileImage.addEventListener(
+          "error",
+          function () {
+
+            this.style.display =
+              "none";
+
+          }
+        );
+
+      }
+
+
+
+      /* =========================
+         LOADER
+      ========================= */
+
+      window.addEventListener(
+        "load",
+        function () {
+
+          var loader =
+            document.getElementById("loader");
+
+
+          if (loader) {
+
+            setTimeout(
+              function () {
+
+                loader.classList.add(
+                  "hide"
+                );
+
+
+                setTimeout(
+                  function () {
+
+                    loader.style.display =
+                      "none";
+
+                  },
+                  400
+                );
+
+              },
+              900
+            );
+
+          }
+
+        }
+      );
+
+
+
+      /* =========================
+         DARK MODE SAVE
+      ========================= */
+
+      try {
+
+        if (
+          localStorage.getItem(
+            "subhanDarkMode"
+          ) === "on"
+        ) {
+
+          document.body.classList.add(
+            "dark"
+          );
+
+        }
+
+      } catch (error) {
+
+        /*
+          LocalStorage unavailable ہونے
+          پر website پھر بھی چلے گی۔
+        */
+
+      }
+
+
+
+      /* =========================
+         DARK MODE UPDATED
+      ========================= */
+
+      var oldDarkMode =
+        darkMode;
+
+
+      darkMode = function () {
+
+        document.body.classList.toggle(
+          "dark"
+        );
+
+
+        try {
+
+          if (
+            document.body.classList.contains(
+              "dark"
+            )
+          ) {
+
+            localStorage.setItem(
+              "subhanDarkMode",
+              "on"
+            );
+
+          } else {
+
+            localStorage.setItem(
+              "subhanDarkMode",
+              "off"
+            );
+
+          }
+
+        } catch (error) {
+
+          /* Ignore storage errors */
+
+        }
+
+
+        toast(
+          document.body.classList.contains(
+            "dark"
+          )
+            ? "🌙 Dark Mode ON"
+            : "☀️ Light Mode ON"
+        );
+
+      };
+
+
+
+      /* =========================
+         ENTER KEY FOR NUMBER GAME
+      ========================= */
+
+      var guessInput =
+        document.getElementById("guess");
+
+
+      if (guessInput) {
+
+        guessInput.addEventListener(
+          "keydown",
+          function (event) {
+
+            if (event.key === "Enter") {
+
+              guessNumber();
+
+            }
+
+          }
+        );
+
+      }
+
+
+
+      /* =========================
+         EMAIL VALIDATION
+      ========================= */
+
+      function validEmail(email) {
+
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+          .test(email);
+
+      }
+
+
+
+      /* =========================
+         FINAL INITIALIZATION
+      ========================= */
+
+      updateClock();
+
+      setInterval(
+        updateClock,
+        1000
+      );
+
+
+    </script>
+
+</body>
+</html> 
