@@ -3,13 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Subhan's Personal Website - Web Developer Portfolio">
+<meta name="author" content="Subhan">
 
 <title>Subhan's Personal Website</title>
 
 <style>
-/* =========================
-   BASIC
-========================= */
+
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
     margin:0;
     padding:0;
@@ -17,255 +21,217 @@
     scroll-behavior:smooth;
 }
 
-:root{
-    --bg:#f4f8ff;
-    --bg2:#ffffff;
-    --text:#10182d;
-    --text2:#526078;
-    --primary:#1769e0;
-    --primary2:#00b7ff;
-    --card:#ffffff;
-    --nav:#071126;
-    --border:#dce6f5;
-    --shadow:0 15px 40px rgba(20,50,100,.12);
+html{
+    scroll-behavior:smooth;
 }
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    transition:background .3s,color .3s;
+    background:linear-gradient(135deg,#eaf4ff,#ffffff);
+    color:#071126;
+    line-height:1.6;
+    transition:0.3s;
 }
 
-/* =========================
-   DARK MODE
-========================= */
-body.dark{
-    --bg:#050b18;
-    --bg2:#0b1428;
-    --text:#ffffff;
-    --text2:#c9d4e8;
-    --card:#111e35;
-    --nav:#020713;
-    --border:#263a5d;
-    --shadow:0 15px 40px rgba(0,0,0,.4);
-}
-
-/* =========================
+/* =========================================================
    NAVBAR
-========================= */
+========================================================= */
+
 nav{
     position:sticky;
     top:0;
-    z-index:1000;
-    background:var(--nav);
-    padding:18px 5%;
-    box-shadow:0 5px 20px rgba(0,0,0,.15);
+    z-index:9999;
+    background:#071126;
+    color:white;
+    box-shadow:0 5px 20px rgba(0,0,0,0.18);
 }
 
 .navbar{
     max-width:1200px;
     margin:auto;
+    padding:18px 25px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
 }
 
 .logo{
-    color:white;
     font-size:42px;
-    font-weight:bold;
+    font-weight:900;
+    color:white;
 }
 
 .menu-btn{
+    display:none;
     border:none;
     background:white;
-    color:#111;
+    color:#071126;
+    border-radius:50px;
     padding:14px 25px;
-    border-radius:40px;
     font-size:20px;
     cursor:pointer;
 }
 
 .menu{
-    display:none;
-    max-width:1200px;
-    margin:15px auto 0;
-    text-align:center;
-}
-
-.menu.show{
-    display:block;
+    display:flex;
+    align-items:center;
+    gap:22px;
 }
 
 .menu a{
-    display:block;
     color:white;
     text-decoration:none;
-    padding:12px;
-    font-size:19px;
+    font-size:16px;
     font-weight:bold;
 }
 
 .menu a:hover{
-    color:#35c7ff;
+    color:#27c2ff;
 }
 
-/* =========================
-   SECTIONS
-========================= */
+/* =========================================================
+   GENERAL
+========================================================= */
+
 section{
-    padding:90px 6%;
-    min-height:500px;
-    background:var(--bg);
-    transition:background .3s;
-}
-
-.container{
-    max-width:1100px;
+    padding:80px 5%;
+    max-width:1200px;
     margin:auto;
 }
 
 .section-title{
     text-align:center;
     font-size:45px;
+    font-weight:900;
     margin-bottom:15px;
 }
 
 .line{
-    width:280px;
-    height:7px;
+    width:90%;
+    max-width:600px;
+    height:14px;
+    margin:0 auto 60px;
     border-radius:20px;
-    background:linear-gradient(90deg,var(--primary),var(--primary2));
-    margin:0 auto 50px;
-    box-shadow:0 0 20px rgba(0,180,255,.4);
+    background:linear-gradient(90deg,#1769e0,#00c6ff);
+    box-shadow:0 5px 20px rgba(0,150,255,0.25);
 }
 
-/* =========================
-   HERO
-========================= */
-.hero{
-    min-height:750px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    background:linear-gradient(135deg,#eef7ff,#ffffff);
+.box{
+    background:white;
+    border-radius:35px;
+    padding:50px;
+    box-shadow:0 15px 40px rgba(0,40,100,0.12);
+    border:1px solid #dce7f5;
 }
 
-body.dark .hero{
-    background:linear-gradient(135deg,#071126,#0d1d3c);
-}
-
-.profile{
-    width:190px;
-    height:190px;
-    object-fit:cover;
-    border-radius:50%;
-    border:8px solid #2494ff;
-    box-shadow:0 0 35px rgba(0,150,255,.35);
-    margin-bottom:30px;
-}
-
-.photo-placeholder{
-    width:190px;
-    height:190px;
-    margin:0 auto 30px;
-    border-radius:50%;
-    border:8px solid #2494ff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#dcecff;
-    color:#1769e0;
-    font-size:70px;
-    font-weight:bold;
-}
-
-.hero h1{
-    font-size:58px;
-    margin-bottom:20px;
-}
-
-.hero h2{
-    color:var(--primary);
-    font-size:32px;
-    min-height:45px;
-    margin-bottom:20px;
-}
-
-.hero p{
-    font-size:22px;
-    color:var(--text2);
-    margin:10px 0;
-}
+/* =========================================================
+   BUTTONS
+========================================================= */
 
 .btn{
     display:inline-block;
     border:none;
-    background:linear-gradient(90deg,#1825ee,#173be8);
+    background:linear-gradient(90deg,#183be8,#173ce8);
     color:white;
     padding:17px 35px;
-    margin:12px 7px;
-    border-radius:40px;
-    font-size:19px;
+    border-radius:50px;
+    font-size:20px;
     cursor:pointer;
     text-decoration:none;
-    box-shadow:0 8px 20px rgba(25,40,230,.25);
+    margin:8px;
+    box-shadow:0 12px 30px rgba(40,60,240,0.25);
+    transition:0.25s;
 }
 
 .btn:hover{
-    transform:translateY(-2px);
+    transform:translateY(-3px);
 }
 
-/* =========================
-   CARDS
-========================= */
-.box,
-.card,
-.skill-box,
-.service,
-.project,
-.contact-box,
-.game-box{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:25px;
-    box-shadow:var(--shadow);
-    transition:background .3s,color .3s;
-}
+/* =========================================================
+   HOME
+========================================================= */
 
-.box{
-    padding:40px;
+.hero{
+    min-height:700px;
+    max-width:none;
     text-align:center;
-    font-size:21px;
-    line-height:1.8;
-    color:var(--text2);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#eaf4ff,#ffffff);
 }
 
-/* =========================
+.profile{
+    width:180px;
+    height:180px;
+    object-fit:cover;
+    border-radius:50%;
+    border:8px solid white;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:60px;
+    font-weight:900;
+    margin-bottom:10px;
+}
+
+.hero h2{
+    color:#1475df;
+    font-size:32px;
+    min-height:50px;
+}
+
+.hero p{
+    font-size:20px;
+    color:#526176;
+    margin:10px 0;
+}
+
+.hero-buttons{
+    margin-top:20px;
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-text{
+    text-align:center;
+    font-size:25px;
+    color:#536176;
+}
+
+/* =========================================================
    SKILLS
-========================= */
-.skills{
-    max-width:900px;
-    margin:auto;
+========================================================= */
+
+.skills-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
 }
 
 .skill-box{
-    padding:22px;
-    margin:18px 0;
+    background:white;
+    padding:25px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,30,80,0.1);
 }
 
-.skill-top{
+.skill-header{
     display:flex;
     justify-content:space-between;
+    font-size:20px;
+    font-weight:bold;
     margin-bottom:10px;
-    font-size:18px;
 }
 
 .progress{
-    height:15px;
-    background:#dce4ef;
+    height:18px;
+    background:#dfe8f5;
     border-radius:20px;
     overflow:hidden;
 }
@@ -274,245 +240,394 @@ body.dark .hero{
     display:block;
     height:100%;
     width:0;
-    background:linear-gradient(90deg,var(--primary),var(--primary2));
+    background:linear-gradient(90deg,#1769e0,#00c6ff);
     border-radius:20px;
-    transition:width 1.2s ease;
+    transition:1.5s;
 }
 
-/* =========================
-   SERVICES / PROJECTS
-========================= */
-.grid{
-    max-width:1100px;
-    margin:auto;
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.cards{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:25px;
 }
 
-.service,
-.project,
 .card{
-    padding:30px;
+    background:white;
+    padding:35px 25px;
+    border-radius:30px;
     text-align:center;
+    box-shadow:0 12px 35px rgba(0,30,80,0.12);
+    border:1px solid #dce7f5;
+    transition:0.3s;
 }
 
-.service h3,
-.project h3,
-.card h3{
-    font-size:25px;
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card .icon{
+    font-size:55px;
     margin-bottom:15px;
 }
 
-.service p,
-.project p,
-.card p{
-    color:var(--text2);
-    line-height:1.6;
+.card h3{
+    font-size:26px;
+    margin-bottom:10px;
 }
 
-/* =========================
+.card p{
+    color:#5d687a;
+    font-size:17px;
+}
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.project{
+    min-height:250px;
+}
+
+.project h3{
+    font-size:25px;
+}
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.gallery-box{
+    height:230px;
+    border-radius:25px;
+    overflow:hidden;
+    background:#071126;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:70px;
+}
+
+.gallery-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* =========================================================
+   ACHIEVEMENTS
+========================================================= */
+
+.achievement{
+    border-left:7px solid #1774e8;
+}
+
+/* =========================================================
    CLOCK
-========================= */
+========================================================= */
+
 .clock-box{
-    max-width:800px;
-    margin:auto;
     background:#071126;
     color:white;
-    padding:45px 20px;
+    padding:50px 20px;
+    border-radius:50px;
     text-align:center;
-    border-radius:45px;
-    box-shadow:0 20px 45px rgba(0,0,0,.2);
+    box-shadow:0 20px 50px rgba(0,20,70,0.25);
 }
 
 #clock{
-    font-size:65px;
-    font-weight:bold;
-    letter-spacing:3px;
+    font-size:70px;
+    font-weight:900;
+    letter-spacing:4px;
 }
 
 #date{
     font-size:22px;
-    margin-top:20px;
-    color:#cbd8ee;
+    margin-top:15px;
+    color:#cbd9ef;
 }
 
-/* =========================
+/* =========================================================
    CALCULATOR
-========================= */
+========================================================= */
+
 .calculator{
-    max-width:380px;
+    max-width:420px;
     margin:auto;
-    padding:25px;
     background:#071126;
-    border-radius:30px;
-    box-shadow:var(--shadow);
+    padding:25px;
+    border-radius:35px;
+    box-shadow:0 20px 50px rgba(0,20,70,0.25);
 }
 
 #display{
     width:100%;
-    padding:20px;
-    font-size:30px;
+    height:75px;
     border:none;
-    border-radius:15px;
-    margin-bottom:15px;
+    outline:none;
+    border-radius:20px;
+    padding:15px;
+    font-size:30px;
     text-align:right;
+    margin-bottom:15px;
 }
 
-.calc-grid{
+.calc-buttons{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:10px;
 }
 
-.calc-grid button{
-    padding:20px 5px;
-    font-size:20px;
+.calc-buttons button{
+    height:65px;
     border:none;
-    border-radius:15px;
+    border-radius:18px;
+    font-size:23px;
     cursor:pointer;
-    background:#edf3ff;
-    color:#111;
+    background:#eaf1ff;
+    color:#071126;
 }
 
-.calc-grid button:hover{
-    background:#bcd8ff;
+.calc-buttons button:hover{
+    background:#2b72ef;
+    color:white;
 }
 
-/* =========================
-   GAMES
-========================= */
+/* =========================================================
+   NUMBER GAME
+========================================================= */
+
 .game-box{
-    max-width:500px;
-    margin:25px auto;
-    padding:30px;
+    max-width:600px;
+    margin:auto;
+    background:white;
+    border-radius:35px;
+    padding:40px;
     text-align:center;
+    box-shadow:0 15px 40px rgba(0,30,80,0.12);
 }
 
 .game-box input{
     width:100%;
-    padding:15px;
-    margin:10px 0;
-    border:1px solid var(--border);
-    border-radius:12px;
-    font-size:18px;
-    background:var(--bg2);
-    color:var(--text);
+    padding:17px;
+    border:2px solid #d5e0f0;
+    border-radius:20px;
+    font-size:20px;
+    outline:none;
+    margin-bottom:15px;
 }
 
-.result{
+#gameResult{
     margin-top:15px;
     font-size:20px;
     font-weight:bold;
 }
 
+/* =========================================================
+   TIC TAC TOE
+========================================================= */
+
 .tic-board{
-    max-width:330px;
-    margin:20px auto;
+    width:330px;
+    max-width:100%;
+    margin:25px auto;
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:8px;
+    gap:10px;
 }
 
 .tic-cell{
     height:100px;
     border:none;
-    border-radius:15px;
-    background:#1838df;
+    border-radius:20px;
+    background:#2140df;
     color:white;
-    font-size:40px;
+    font-size:45px;
+    font-weight:bold;
     cursor:pointer;
 }
 
-/* =========================
+.tic-cell:hover{
+    background:#1734bc;
+}
+
+#ticStatus{
+    text-align:center;
+    font-size:25px;
+    font-weight:bold;
+}
+
+/* =========================================================
    CONTACT
-========================= */
-.contact-box{
+========================================================= */
+
+.contact-form{
     max-width:700px;
     margin:auto;
-    padding:35px;
 }
 
-.contact-box input,
-.contact-box textarea{
+.contact-form input,
+.contact-form textarea{
     width:100%;
-    padding:15px;
-    margin:8px 0;
-    border:1px solid var(--border);
-    border-radius:12px;
-    background:var(--bg2);
-    color:var(--text);
-    font-size:17px;
+    padding:18px;
+    margin-bottom:15px;
+    border:2px solid #d6e1ef;
+    border-radius:20px;
+    font-size:18px;
+    outline:none;
 }
 
-.contact-box textarea{
-    min-height:140px;
+.contact-form textarea{
+    min-height:150px;
     resize:vertical;
 }
 
-/* =========================
+/* =========================================================
    SOCIAL
-========================= */
+========================================================= */
+
 .social{
-    max-width:850px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
 }
 
 .social a{
     text-decoration:none;
-    text-align:center;
-    padding:22px;
-    background:#111be0;
     color:white;
-    border-radius:20px;
-    font-size:20px;
+    background:#071126;
+    padding:15px 25px;
+    border-radius:50px;
     font-weight:bold;
 }
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
+
 footer{
     background:#071126;
     color:white;
     text-align:center;
-    padding:45px 20px;
-    font-size:18px;
+    padding:35px 20px;
+    font-size:17px;
 }
 
-footer p{
-    margin:10px;
-}
-
-/* =========================
+/* =========================================================
    TOP BUTTON
-========================= */
+========================================================= */
+
 #topBtn{
-    display:none;
     position:fixed;
     right:20px;
     bottom:20px;
-    z-index:999;
-    border:none;
-    background:#1739e8;
-    color:white;
     width:55px;
     height:55px;
+    border:none;
     border-radius:50%;
+    background:#1769e0;
+    color:white;
     font-size:25px;
     cursor:pointer;
+    display:none;
+    z-index:999;
 }
 
-/* =========================
-   MOBILE
-========================= */
-@media(max-width:700px){
+/* =========================================================
+   TOAST
+========================================================= */
 
-    nav{
-        padding:18px 25px;
+#toast{
+    position:fixed;
+    left:50%;
+    bottom:30px;
+    transform:translateX(-50%) translateY(100px);
+    background:#071126;
+    color:white;
+    padding:15px 25px;
+    border-radius:50px;
+    opacity:0;
+    transition:0.4s;
+    z-index:99999;
+}
+
+#toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+}
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+body.dark{
+    background:#071126;
+    color:white;
+}
+
+body.dark section{
+    background:#071126;
+}
+
+body.dark .hero{
+    background:linear-gradient(135deg,#071126,#10284a);
+}
+
+body.dark .box,
+body.dark .card,
+body.dark .skill-box,
+body.dark .game-box{
+    background:#182b43;
+    color:white;
+    border-color:#29496d;
+}
+
+body.dark .about-text,
+body.dark .card p,
+body.dark .hero p{
+    color:#d3dfef;
+}
+
+body.dark .progress{
+    background:#405066;
+}
+
+body.dark .contact-form input,
+body.dark .contact-form textarea,
+body.dark .game-box input{
+    background:#182b43;
+    color:white;
+    border-color:#4c7195;
+}
+
+body.dark .contact-form input::placeholder,
+body.dark .contact-form textarea::placeholder,
+body.dark .game-box input::placeholder{
+    color:#cbd5e1;
+}
+
+body.dark .section-title{
+    color:white;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:800px){
+
+    .navbar{
+        padding:18px 20px;
     }
 
     .logo{
@@ -520,462 +635,557 @@ footer p{
     }
 
     .menu-btn{
-        font-size:18px;
-        padding:13px 22px;
+        display:block;
+    }
+
+    .menu{
+        position:absolute;
+        top:100%;
+        left:0;
+        width:100%;
+        background:#071126;
+        display:none;
+        flex-direction:column;
+        padding:20px;
+        gap:18px;
+    }
+
+    .menu.show{
+        display:flex;
     }
 
     section{
-        padding:70px 20px;
-    }
-
-    .hero{
-        min-height:700px;
-    }
-
-    .hero h1{
-        font-size:46px;
-    }
-
-    .hero h2{
-        font-size:27px;
-    }
-
-    .hero p{
-        font-size:19px;
+        padding:70px 5%;
     }
 
     .section-title{
         font-size:38px;
     }
 
-    .grid{
+    .hero{
+        min-height:650px;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .hero h2{
+        font-size:27px;
+    }
+
+    .skills-container{
         grid-template-columns:1fr;
     }
 
-    .social{
-        grid-template-columns:1fr 1fr;
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .box{
+        padding:35px 25px;
+    }
+
+    .about-text{
+        font-size:22px;
     }
 
     #clock{
         font-size:42px;
     }
 
-    #date{
-        font-size:17px;
-    }
-
-    .profile,
-    .photo-placeholder{
-        width:155px;
-        height:155px;
-    }
-
-    .box{
-        padding:25px;
+    .clock-box{
+        padding:40px 15px;
     }
 }
 
-@media(max-width:420px){
-    .social{
-        grid-template-columns:1fr;
+@media(max-width:450px){
+
+    .logo{
+        font-size:34px;
+    }
+
+    .menu-btn{
+        font-size:18px;
+        padding:12px 20px;
     }
 
     .hero h1{
         font-size:40px;
     }
 
-    .logo{
+    .hero h2{
+        font-size:23px;
+    }
+
+    .profile{
+        width:150px;
+        height:150px;
+    }
+
+    .section-title{
+        font-size:32px;
+    }
+
+    #clock{
         font-size:34px;
     }
+
+    .tic-cell{
+        height:85px;
+    }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- =========================
+<!-- =====================================================
      NAVIGATION
-========================= -->
+===================================================== -->
+
 <nav>
-    <div class="navbar">
-        <div class="logo">Subhan</div>
+<div class="navbar">
 
-        <button class="menu-btn" onclick="menuToggle()">
-            ☰ Menu
-        </button>
-    </div>
+<div class="logo">Subhan</div>
 
-    <div class="menu" id="menu">
-        <a href="#home" onclick="closeMenu()">Home</a>
-        <a href="#about" onclick="closeMenu()">About</a>
-        <a href="#skills" onclick="closeMenu()">Skills</a>
-        <a href="#services" onclick="closeMenu()">Services</a>
-        <a href="#projects" onclick="closeMenu()">Projects</a>
-        <a href="#clock-section" onclick="closeMenu()">Clock</a>
-        <a href="#calculator" onclick="closeMenu()">Calculator</a>
-        <a href="#games" onclick="closeMenu()">Games</a>
-        <a href="#contact" onclick="closeMenu()">Contact</a>
-    </div>
+<button class="menu-btn" onclick="menuToggle()">
+☰ Menu
+</button>
+
+<div class="menu" id="menu">
+
+<a href="#home" onclick="closeMenu()">Home</a>
+<a href="#about" onclick="closeMenu()">About</a>
+<a href="#skills" onclick="closeMenu()">Skills</a>
+<a href="#services" onclick="closeMenu()">Services</a>
+<a href="#projects" onclick="closeMenu()">Projects</a>
+<a href="#gallery" onclick="closeMenu()">Gallery</a>
+<a href="#achievements" onclick="closeMenu()">Achievements</a>
+<a href="#clockSection" onclick="closeMenu()">Clock</a>
+<a href="#calculator" onclick="closeMenu()">Calculator</a>
+<a href="#game" onclick="closeMenu()">Game</a>
+<a href="#tic" onclick="closeMenu()">Tic-Tac-Toe</a>
+<a href="#contact" onclick="closeMenu()">Contact</a>
+
+</div>
+
+</div>
 </nav>
 
-<!-- =========================
+
+<!-- =====================================================
      HOME
-========================= -->
+===================================================== -->
+
 <section id="home" class="hero">
-    <div class="container">
 
-        <img
-            src="AA.jpg"
-            class="profile"
-            id="profileImage"
-            alt="Subhan Photo"
-            onerror="this.style.display='none';document.getElementById('photoPlaceholder').style.display='flex';"
-        >
+<img
+src="AA.jpg"
+alt="Subhan Photo"
+class="profile"
+onerror="this.style.display='none';"
+>
 
-        <div class="photo-placeholder" id="photoPlaceholder" style="display:none;">
-            S
-        </div>
+<h1>Welcome to My Website</h1>
 
-        <h1>Welcome to My Website</h1>
+<h2 id="typing">I am a Web Developer.</h2>
 
-        <h2 id="typing">I am a Web Developer.</h2>
+<p>My name is Subhan.</p>
 
-        <p>My name is Subhan.</p>
-        <p>I am learning Web Development.</p>
+<p>I am learning Web Development.</p>
 
-        <button class="btn" onclick="welcome()">
-            👋 Click Me
-        </button>
+<div class="hero-buttons">
 
-        <button class="btn" onclick="darkMode()">
-            🌙 Dark Mode
-        </button>
+<button class="btn" onclick="welcome()">
+👋 Welcome
+</button>
 
-        <a class="btn" href="CV.pdf" download>
-            📄 Download CV
-        </a>
+<button class="btn" onclick="darkMode()">
+🌙 Dark Mode
+</button>
 
-    </div>
+<a
+href="#"
+class="btn"
+onclick="downloadCV();return false;"
+>
+📄 Download CV
+</a>
+
+</div>
+
 </section>
 
-<!-- =========================
+
+<!-- =====================================================
      ABOUT
-========================= -->
+===================================================== -->
+
 <section id="about">
-    <div class="container">
 
-        <h2 class="section-title">👨‍💻 About Me</h2>
-        <div class="line"></div>
+<h2 class="section-title">
+👨‍💻 About Me
+</h2>
 
-        <div class="box">
-            <p>
-                I am a student and I am learning HTML, CSS and JavaScript.
-            </p>
+<div class="line"></div>
 
-            <p>
-                My goal is to become a professional Web Developer.
-            </p>
+<div class="box about-text">
 
-            <p>
-                I enjoy creating modern, responsive and useful websites.
-            </p>
-        </div>
+<p>
+I am a student and I am learning HTML, CSS and JavaScript.
+</p>
 
-    </div>
+<p>
+My goal is to become a professional Web Developer.
+</p>
+
+<p>
+I enjoy creating modern, responsive and useful websites.
+</p>
+
+</div>
+
 </section>
 
-<!-- =========================
+
+<!-- =====================================================
      SKILLS
-========================= -->
+===================================================== -->
+
 <section id="skills">
-    <div class="container">
 
-        <h2 class="section-title">💻 My Skills</h2>
-        <div class="line"></div>
+<h2 class="section-title">
+🛠️ My Skills
+</h2>
 
-        <div class="skills">
+<div class="line"></div>
 
-            <div class="skill-box">
-                <div class="skill-top">
-                    <strong>HTML</strong>
-                    <strong>90%</strong>
-                </div>
-                <div class="progress">
-                    <span data-width="90%"></span>
-                </div>
-            </div>
+<div class="skills-container">
 
-            <div class="skill-box">
-                <div class="skill-top">
-                    <strong>CSS</strong>
-                    <strong>80%</strong>
-                </div>
-                <div class="progress">
-                    <span data-width="80%"></span>
-                </div>
-            </div>
+<div class="skill-box">
 
-            <div class="skill-box">
-                <div class="skill-top">
-                    <strong>JavaScript</strong>
-                    <strong>70%</strong>
-                </div>
-                <div class="progress">
-                    <span data-width="70%"></span>
-                </div>
-            </div>
+<div class="skill-header">
+<span>HTML</span>
+<span>90%</span>
+</div>
 
-            <div class="skill-box">
-                <div class="skill-top">
-                    <strong>Web Development</strong>
-                    <strong>75%</strong>
-                </div>
-                <div class="progress">
-                    <span data-width="75%"></span>
-                </div>
-            </div>
+<div class="progress">
+<span data-width="90%"></span>
+</div>
 
-        </div>
-    </div>
+</div>
+
+
+<div class="skill-box">
+
+<div class="skill-header">
+<span>CSS</span>
+<span>80%</span>
+</div>
+
+<div class="progress">
+<span data-width="80%"></span>
+</div>
+
+</div>
+
+
+<div class="skill-box">
+
+<div class="skill-header">
+<span>JavaScript</span>
+<span>70%</span>
+</div>
+
+<div class="progress">
+<span data-width="70%"></span>
+</div>
+
+</div>
+
+
+<div class="skill-box">
+
+<div class="skill-header">
+<span>Web Development</span>
+<span>75%</span>
+</div>
+
+<div class="progress">
+<span data-width="75%"></span>
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<!-- =========================
+
+<!-- =====================================================
      SERVICES
-========================= -->
+===================================================== -->
+
 <section id="services">
-    <div class="container">
 
-        <h2 class="section-title">🛠️ Services</h2>
-        <div class="line"></div>
+<h2 class="section-title">
+💼 Services
+</h2>
 
-        <div class="grid">
+<div class="line"></div>
 
-            <div class="service">
-                <h3>🌐 Website Design</h3>
-                <p>
-                    Modern and responsive websites for mobile and desktop.
-                </p>
-            </div>
+<div class="cards">
 
-            <div class="service">
-                <h3>🎨 Web Styling</h3>
-                <p>
-                    Clean, attractive and professional HTML and CSS designs.
-                </p>
-            </div>
+<div class="card">
+<div class="icon">🌐</div>
+<h3>Website Design</h3>
+<p>
+Modern and responsive website design using HTML and CSS.
+</p>
+</div>
 
-            <div class="service">
-                <h3>⚡ JavaScript</h3>
-                <p>
-                    Interactive features and useful JavaScript functionality.
-                </p>
-            </div>
 
-        </div>
-    </div>
+<div class="card">
+<div class="icon">💻</div>
+<h3>Frontend Development</h3>
+<p>
+Interactive frontend websites using HTML, CSS and JavaScript.
+</p>
+</div>
+
+
+<div class="card">
+<div class="icon">📱</div>
+<h3>Responsive Design</h3>
+<p>
+Websites that work properly on mobile, tablet and computer.
+</p>
+</div>
+
+
+<div class="card">
+<div class="icon">⚡</div>
+<h3>JavaScript</h3>
+<p>
+Interactive buttons, games, calculators and useful web features.
+</p>
+</div>
+
+
+<div class="card">
+<div class="icon">🎨</div>
+<h3>UI Design</h3>
+<p>
+Clean, simple and attractive user interfaces.
+</p>
+</div>
+
+
+<div class="card">
+<div class="icon">🔧</div>
+<h3>Website Improvement</h3>
+<p>
+Fixing and improving existing HTML, CSS and JavaScript websites.
+</p>
+</div>
+
+</div>
+
 </section>
 
-<!-- =========================
+
+<!-- =====================================================
      PROJECTS
-========================= -->
+===================================================== -->
+
 <section id="projects">
-    <div class="container">
 
-        <h2 class="section-title">🚀 My Projects</h2>
-        <div class="line"></div>
+<h2 class="section-title">
+🚀 My Projects
+</h2>
 
-        <div class="grid">
+<div class="line"></div>
 
-            <div class="project">
-                <h3>🌐 Personal Website</h3>
-                <p>
-                    My personal portfolio website made with HTML, CSS and JavaScript.
-                </p>
-            </div>
+<div class="cards">
 
-            <div class="project">
-                <h3>🧮 Calculator</h3>
-                <p>
-                    A simple working calculator using JavaScript.
-                </p>
-            </div>
+<div class="card project">
+<div class="icon">🌐</div>
+<h3>Personal Website</h3>
+<p>
+My complete personal portfolio website.
+</p>
+</div>
 
-            <div class="project">
-                <h3>🎮 Number Game</h3>
-                <p>
-                    Guess the secret number between 1 and 100.
-                </p>
-            </div>
 
-            <div class="project">
-                <h3>❌⭕ Tic-Tac-Toe</h3>
-                <p>
-                    Two-player Tic-Tac-Toe game.
-                </p>
-            </div>
+<div class="card project">
+<div class="icon">🧮</div>
+<h3>Calculator</h3>
+<p>
+A working JavaScript calculator.
+</p>
+</div>
 
-            <div class="project">
-                <h3>🕐 Live Clock</h3>
-                <p>
-                    Real-time digital clock and date.
-                </p>
-            </div>
 
-            <div class="project">
-                <h3>📱 Contact</h3>
-                <p>
-                    WhatsApp contact form for visitors.
-                </p>
-            </div>
+<div class="card project">
+<div class="icon">🎯</div>
+<h3>Number Guessing Game</h3>
+<p>
+Guess a random number between 1 and 100.
+</p>
+</div>
 
-        </div>
-    </div>
+
+<div class="card project">
+<div class="icon">❌⭕</div>
+<h3>Tic-Tac-Toe</h3>
+<p>
+Two-player Tic-Tac-Toe game.
+</p>
+</div>
+
+
+<div class="card project">
+<div class="icon">⏰</div>
+<h3>Live Clock</h3>
+<p>
+Real-time digital clock and date.
+</p>
+</div>
+
+
+<div class="card project">
+<div class="icon">📱</div>
+<h3>Contact</h3>
+<p>
+WhatsApp contact form for visitors.
+</p>
+</div>
+
+</div>
+
 </section>
 
-<!-- =========================
+
+<!-- =====================================================
+     GALLERY
+===================================================== -->
+
+<section id="gallery">
+
+<h2 class="section-title">
+🖼️ Gallery
+</h2>
+
+<div class="line"></div>
+
+<div class="gallery">
+
+<div class="gallery-box">
+<img
+src="AA.jpg"
+alt="Subhan"
+onerror="this.style.display='none';this.parentElement.innerHTML='👨‍💻';"
+>
+</div>
+
+<div class="gallery-box">
+💻
+</div>
+
+<div class="gallery-box">
+🌐
+</div>
+
+<div class="gallery-box">
+🚀
+</div>
+
+<div class="gallery-box">
+🧮
+</div>
+
+<div class="gallery-box">
+🎯
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     ACHIEVEMENTS
+===================================================== -->
+
+<section id="achievements">
+
+<h2 class="section-title">
+🏆 Achievements
+</h2>
+
+<div class="line"></div>
+
+<div class="cards">
+
+<div class="card achievement">
+<h3>HTML Learning</h3>
+<p>
+Learning HTML structure and creating web pages.
+</p>
+</div>
+
+<div class="card achievement">
+<h3>CSS Learning</h3>
+<p>
+Learning responsive layouts, colors and modern design.
+</p>
+</div>
+
+<div class="card achievement">
+<h3>JavaScript Learning</h3>
+<p>
+Learning JavaScript logic and interactive websites.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
      CLOCK
-========================= -->
-<section id="clock-section">
-    <div class="container">
+===================================================== -->
 
-        <h2 class="section-title">⏰ Live Digital Clock</h2>
-        <div class="line"></div>
+<section id="clockSection">
 
-        <div class="clock-box">
-            <div id="clock">00:00:00</div>
-            <div id="date">Loading...</div>
-        </div>
+<h2 class="section-title">
+⏰ Live Digital Clock
+</h2>
 
-    </div>
+<div class="line"></div>
+
+<div class="clock-box">
+
+<div id="clock">
+00:00:00
+</div>
+
+<div id="date">
+Loading date...
+</div>
+
+</div>
+
 </section>
 
-<!-- =========================
+
+<!-- =====================================================
      CALCULATOR
-========================= -->
-<section id="calculator">
-    <div class="container">
-
-        <h2 class="section-title">🧮 Calculator</h2>
-        <div class="line"></div>
-
-        <div class="calculator">
-
-            <input type="text" id="display" readonly>
-
-            <div class="calc-grid">
-
-                <button onclick="clearCalc()">C</button>
-                <button onclick="deleteCalc()">⌫</button>
-                <button onclick="calcAdd('%')">%</button>
-                <button onclick="calcAdd('/')">÷</button>
-
-                <button onclick="calcAdd('7')">7</button>
-                <button onclick="calcAdd('8')">8</button>
-                <button onclick="calcAdd('9')">9</button>
-                <button onclick="calcAdd('*')">×</button>
-
-                <button onclick="calcAdd('4')">4</button>
-                <button onclick="calcAdd('5')">5</button>
-                <button onclick="calcAdd('6')">6</button>
-                <button onclick="calcAdd('-')">−</button>
-
-                <button onclick="calcAdd('1')">1</button>
-                <button onclick="calcAdd('2')">2</button>
-                <button onclick="calcAdd('3')">3</button>
-                <button onclick="calcAdd('+')">+</button>
-
-                <button onclick="calcAdd('0')">0</button>
-                <button onclick="calcAdd('.')">.</button>
-                <button onclick="calcResult()" style="grid-column:span 2;">=</button>
-
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!-- =========================
-     GAMES
-========================= -->
-<section id="games">
-    <div class="container">
-
-        <h2 class="section-title">🎮 Games</h2>
-        <div class="line"></div>
-
-        <!-- NUMBER GAME -->
-        <div class="game-box">
-
-            <h3>🔢 Number Guessing Game</h3>
-
-            <p style="margin:15px 0;color:var(--text2);">
-                Guess a number between 1 and 100.
-            </p>
-
-            <input
-                type="number"
-                id="guessInput"
-                placeholder="Enter your number"
-                min="1"
-                max="100"
-            >
-
-            <button class="btn" onclick="guessNumber()">
-                Guess
-            </button>
-
-            <button class="btn" onclick="newGame()">
-                New Game
-            </button>
-
-            <div class="result" id="guessResult">
-                Game started!
-            </div>
-
-        </div>
-
-        <!-- TIC TAC TOE -->
-        <div class="game-box">
-
-            <h3>❌⭕ Tic-Tac-Toe</h3>
-
-            <p style="margin:15px;color:var(--text2);">
-                Player: <strong id="currentPlayer">X</strong>
-            </p>
-
-            <div class="tic-board">
-
-                <button class="tic-cell" onclick="ticPlay(0)"></button>
-                <button class="tic-cell" onclick="ticPlay(1)"></button>
-                <button class="tic-cell" onclick="ticPlay(2)"></button>
-
-                <button class="tic-cell" onclick="ticPlay(3)"></button>
-                <button class="tic-cell" onclick="ticPlay(4)"></button>
-                <button class="tic-cell" onclick="ticPlay(5)"></button>
-
-                <button class="tic-cell" onclick="ticPlay(6)"></button>
-                <button class="tic-cell" onclick="ticPlay(7)"></button>
-                <button class="tic-cell" onclick="ticPlay(8)"></button>
-
-            </div>
-
-            <div class="result" id="ticResult">
-                Your turn!
-            </div>
-
-            <button class="btn" onclick="resetTic()">
-                Reset Game
-            </button>
-
-        </div>
-
-    </div>
-</section>
-
-<!-- =========================
-     CONTACT
-========================= -->
-<section id="contact">
-    <div class="container">
-
-        <h2 class="section-t
+=====================================
