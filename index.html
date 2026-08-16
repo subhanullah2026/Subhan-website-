@@ -836,7 +836,15 @@ footer p{
     animation-iteration-count:1!important;
     transition-duration:.01ms!important;
   }
+}#loader{
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
+
+#loader.hide{
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
   </head>
   <body>
@@ -1641,24 +1649,19 @@ footer p{
 
 window.addEventListener("load", function(){
 
-  setTimeout(function(){
-
     var loader = document.getElementById("loader");
 
     if(loader){
-      loader.classList.add("hide");
+        loader.style.opacity = "0";
+        loader.style.visibility = "hidden";
+        loader.style.pointerEvents = "none";
     }
 
     document.querySelectorAll(".progress").forEach(function(bar){
-
-      bar.style.width = bar.dataset.width || "0%";
-
+        bar.style.width = bar.dataset.width || "0%";
     });
 
-  }, 1000);
-
 });
-
 
 /* =========================
    MOBILE MENU
