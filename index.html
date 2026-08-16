@@ -3,1189 +3,1238 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Subhan's Personal Website - Web Developer Portfolio">
-<meta name="author" content="Subhan">
-
+<meta name="description" content="Subhan's personal portfolio website">
+<meta name="theme-color" content="#07152f">
 <title>Subhan's Personal Website</title>
 
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html{
-    scroll-behavior:smooth;
+  scroll-behavior:smooth;
+  scroll-padding-top:86px;
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:linear-gradient(135deg,#eaf4ff,#ffffff);
-    color:#071126;
-    line-height:1.6;
-    transition:0.3s;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f3f7ff;
+  color:#172033;
+  line-height:1.6;
+  text-align:center;
+  transition:background .3s,color .3s;
+  overflow-x:hidden;
 }
 
-/* =========================================================
-   NAVBAR
-========================================================= */
+body.dark{
+  background:#0b1220;
+  color:#f5f7fb;
+}
 
+button,input,textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+}
+
+/* LOADER */
+#loader{
+  position:fixed;
+  inset:0;
+  background:#07152f;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+  transition:opacity .35s,visibility .35s;
+}
+
+#loader.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+.spinner{
+  width:64px;
+  height:64px;
+  border:7px solid rgba(255,255,255,.35);
+  border-top-color:#18b9ff;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+
+#loader p{
+  margin-top:18px;
+  font-size:18px;
+  color:#fff;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+/* NAVIGATION */
 nav{
-    position:sticky;
-    top:0;
-    z-index:9999;
-    background:#071126;
-    color:white;
-    box-shadow:0 5px 20px rgba(0,0,0,0.18);
+  position:sticky;
+  top:0;
+  z-index:5000;
+  background:#07152f;
+  box-shadow:0 8px 25px rgba(0,0,0,.15);
 }
 
 .navbar{
-    max-width:1200px;
-    margin:auto;
-    padding:18px 25px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+  width:min(1150px,100%);
+  min-height:78px;
+  margin:auto;
+  padding:12px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
 }
 
 .logo{
-    font-size:42px;
-    font-weight:900;
-    color:white;
+  color:#fff;
+  font-size:34px;
+  font-weight:800;
+  letter-spacing:.5px;
 }
 
 .menu-btn{
-    display:none;
-    border:none;
-    background:white;
-    color:#071126;
-    border-radius:50px;
-    padding:14px 25px;
-    font-size:20px;
-    cursor:pointer;
+  display:none;
+  border:0;
+  border-radius:50px;
+  padding:13px 20px;
+  background:#fff;
+  color:#07152f;
+  font-weight:700;
 }
 
-.menu{
-    display:flex;
-    align-items:center;
-    gap:22px;
+.navlinks{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:4px;
 }
 
-.menu a{
-    color:white;
-    text-decoration:none;
-    font-size:16px;
-    font-weight:bold;
+.navlinks a{
+  color:#fff;
+  text-decoration:none;
+  padding:9px 11px;
+  border-radius:10px;
+  font-size:14px;
+  font-weight:700;
+  transition:background .2s,transform .2s;
 }
 
-.menu a:hover{
-    color:#27c2ff;
+.navlinks a:hover{
+  background:rgba(255,255,255,.13);
+  transform:translateY(-1px);
 }
 
-/* =========================================================
-   GENERAL
-========================================================= */
-
+/* SECTIONS */
 section{
-    padding:80px 5%;
-    max-width:1200px;
-    margin:auto;
+  width:100%;
+  padding:78px 18px;
 }
 
 .section-title{
-    text-align:center;
-    font-size:45px;
-    font-weight:900;
-    margin-bottom:15px;
-}
-
-.line{
-    width:90%;
-    max-width:600px;
-    height:14px;
-    margin:0 auto 60px;
-    border-radius:20px;
-    background:linear-gradient(90deg,#1769e0,#00c6ff);
-    box-shadow:0 5px 20px rgba(0,150,255,0.25);
-}
-
-.box{
-    background:white;
-    border-radius:35px;
-    padding:50px;
-    box-shadow:0 15px 40px rgba(0,40,100,0.12);
-    border:1px solid #dce7f5;
-}
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.btn{
-    display:inline-block;
-    border:none;
-    background:linear-gradient(90deg,#183be8,#173ce8);
-    color:white;
-    padding:17px 35px;
-    border-radius:50px;
-    font-size:20px;
-    cursor:pointer;
-    text-decoration:none;
-    margin:8px;
-    box-shadow:0 12px 30px rgba(40,60,240,0.25);
-    transition:0.25s;
-}
-
-.btn:hover{
-    transform:translateY(-3px);
-}
-
-/* =========================================================
-   HOME
-========================================================= */
-
-.hero{
-    min-height:700px;
-    max-width:none;
-    text-align:center;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    background:linear-gradient(135deg,#eaf4ff,#ffffff);
-}
-
-.profile{
-    width:180px;
-    height:180px;
-    object-fit:cover;
-    border-radius:50%;
-    border:8px solid white;
-    box-shadow:0 15px 40px rgba(0,0,0,0.2);
-    margin-bottom:25px;
-}
-
-.hero h1{
-    font-size:60px;
-    font-weight:900;
-    margin-bottom:10px;
-}
-
-.hero h2{
-    color:#1475df;
-    font-size:32px;
-    min-height:50px;
-}
-
-.hero p{
-    font-size:20px;
-    color:#526176;
-    margin:10px 0;
-}
-
-.hero-buttons{
-    margin-top:20px;
-}
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about-text{
-    text-align:center;
-    font-size:25px;
-    color:#536176;
-}
-
-/* =========================================================
-   SKILLS
-========================================================= */
-
-.skills-container{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:25px;
-}
-
-.skill-box{
-    background:white;
-    padding:25px;
-    border-radius:25px;
-    box-shadow:0 10px 30px rgba(0,30,80,0.1);
-}
-
-.skill-header{
-    display:flex;
-    justify-content:space-between;
-    font-size:20px;
-    font-weight:bold;
-    margin-bottom:10px;
-}
-
-.progress{
-    height:18px;
-    background:#dfe8f5;
-    border-radius:20px;
-    overflow:hidden;
-}
-
-.progress span{
-    display:block;
-    height:100%;
-    width:0;
-    background:linear-gradient(90deg,#1769e0,#00c6ff);
-    border-radius:20px;
-    transition:1.5s;
-}
-
-/* =========================================================
-   SERVICES
-========================================================= */
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
-}
-
-.card{
-    background:white;
-    padding:35px 25px;
-    border-radius:30px;
-    text-align:center;
-    box-shadow:0 12px 35px rgba(0,30,80,0.12);
-    border:1px solid #dce7f5;
-    transition:0.3s;
-}
-
-.card:hover{
-    transform:translateY(-8px);
-}
-
-.card .icon{
-    font-size:55px;
-    margin-bottom:15px;
-}
-
-.card h3{
-    font-size:26px;
-    margin-bottom:10px;
-}
-
-.card p{
-    color:#5d687a;
-    font-size:17px;
-}
-
-/* =========================================================
-   PROJECTS
-========================================================= */
-
-.project{
-    min-height:250px;
-}
-
-.project h3{
-    font-size:25px;
-}
-
-/* =========================================================
-   GALLERY
-========================================================= */
-
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.gallery-box{
-    height:230px;
-    border-radius:25px;
-    overflow:hidden;
-    background:#071126;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:70px;
-}
-
-.gallery-box img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-/* =========================================================
-   ACHIEVEMENTS
-========================================================= */
-
-.achievement{
-    border-left:7px solid #1774e8;
-}
-
-/* =========================================================
-   CLOCK
-========================================================= */
-
-.clock-box{
-    background:#071126;
-    color:white;
-    padding:50px 20px;
-    border-radius:50px;
-    text-align:center;
-    box-shadow:0 20px 50px rgba(0,20,70,0.25);
-}
-
-#clock{
-    font-size:70px;
-    font-weight:900;
-    letter-spacing:4px;
-}
-
-#date{
-    font-size:22px;
-    margin-top:15px;
-    color:#cbd9ef;
-}
-
-/* =========================================================
-   CALCULATOR
-========================================================= */
-
-.calculator{
-    max-width:420px;
-    margin:auto;
-    background:#071126;
-    padding:25px;
-    border-radius:35px;
-    box-shadow:0 20px 50px rgba(0,20,70,0.25);
-}
-
-#display{
-    width:100%;
-    height:75px;
-    border:none;
-    outline:none;
-    border-radius:20px;
-    padding:15px;
-    font-size:30px;
-    text-align:right;
-    margin-bottom:15px;
-}
-
-.calc-buttons{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-}
-
-.calc-buttons button{
-    height:65px;
-    border:none;
-    border-radius:18px;
-    font-size:23px;
-    cursor:pointer;
-    background:#eaf1ff;
-    color:#071126;
-}
-
-.calc-buttons button:hover{
-    background:#2b72ef;
-    color:white;
-}
-
-/* =========================================================
-   NUMBER GAME
-========================================================= */
-
-.game-box{
-    max-width:600px;
-    margin:auto;
-    background:white;
-    border-radius:35px;
-    padding:40px;
-    text-align:center;
-    box-shadow:0 15px 40px rgba(0,30,80,0.12);
-}
-
-.game-box input{
-    width:100%;
-    padding:17px;
-    border:2px solid #d5e0f0;
-    border-radius:20px;
-    font-size:20px;
-    outline:none;
-    margin-bottom:15px;
-}
-
-#gameResult{
-    margin-top:15px;
-    font-size:20px;
-    font-weight:bold;
-}
-
-/* =========================================================
-   TIC TAC TOE
-========================================================= */
-
-.tic-board{
-    width:330px;
-    max-width:100%;
-    margin:25px auto;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-}
-
-.tic-cell{
-    height:100px;
-    border:none;
-    border-radius:20px;
-    background:#2140df;
-    color:white;
-    font-size:45px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.tic-cell:hover{
-    background:#1734bc;
-}
-
-#ticStatus{
-    text-align:center;
-    font-size:25px;
-    font-weight:bold;
-}
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact-form{
-    max-width:700px;
-    margin:auto;
-}
-
-.contact-form input,
-.contact-form textarea{
-    width:100%;
-    padding:18px;
-    margin-bottom:15px;
-    border:2px solid #d6e1ef;
-    border-radius:20px;
-    font-size:18px;
-    outline:none;
-}
-
-.contact-form textarea{
-    min-height:150px;
-    resize:vertical;
-}
-
-/* =========================================================
-   SOCIAL
-========================================================= */
-
-.social{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:15px;
-}
-
-.social a{
-    text-decoration:none;
-    color:white;
-    background:#071126;
-    padding:15px 25px;
-    border-radius:50px;
-    font-weight:bold;
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-    background:#071126;
-    color:white;
-    text-align:center;
-    padding:35px 20px;
-    font-size:17px;
-}
-
-/* =========================================================
-   TOP BUTTON
-========================================================= */
-
-#topBtn{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    width:55px;
-    height:55px;
-    border:none;
-    border-radius:50%;
-    background:#1769e0;
-    color:white;
-    font-size:25px;
-    cursor:pointer;
-    display:none;
-    z-index:999;
-}
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-#toast{
-    position:fixed;
-    left:50%;
-    bottom:30px;
-    transform:translateX(-50%) translateY(100px);
-    background:#071126;
-    color:white;
-    padding:15px 25px;
-    border-radius:50px;
-    opacity:0;
-    transition:0.4s;
-    z-index:99999;
-}
-
-#toast.show{
-    opacity:1;
-    transform:translateX(-50%) translateY(0);
-}
-
-/* =========================================================
-   DARK MODE
-========================================================= */
-
-body.dark{
-    background:#071126;
-    color:white;
-}
-
-body.dark section{
-    background:#071126;
-}
-
-body.dark .hero{
-    background:linear-gradient(135deg,#071126,#10284a);
-}
-
-body.dark .box,
-body.dark .card,
-body.dark .skill-box,
-body.dark .game-box{
-    background:#182b43;
-    color:white;
-    border-color:#29496d;
-}
-
-body.dark .about-text,
-body.dark .card p,
-body.dark .hero p{
-    color:#d3dfef;
-}
-
-body.dark .progress{
-    background:#405066;
-}
-
-body.dark .contact-form input,
-body.dark .contact-form textarea,
-body.dark .game-box input{
-    background:#182b43;
-    color:white;
-    border-color:#4c7195;
-}
-
-body.dark .contact-form input::placeholder,
-body.dark .contact-form textarea::placeholder,
-body.dark .game-box input::placeholder{
-    color:#cbd5e1;
+  font-size:42px;
+  color:#07152f;
+  margin-bottom:14px;
 }
 
 body.dark .section-title{
-    color:white;
+  color:#66d8ff;
 }
 
-/* =========================================================
-   MOBILE
-========================================================= */
+.section-line{
+  width:min(570px,85%);
+  height:7px;
+  margin:0 auto 48px;
+  border-radius:99px;
+  background:linear-gradient(90deg,#2455e6,#13c4ee);
+}
 
+/* HERO */
+.hero{
+  min-height:calc(100vh - 78px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at top left,rgba(25,189,255,.18),transparent 35%),
+    linear-gradient(135deg,#eef6ff,#fff);
+}
+
+body.dark .hero{
+  background:
+    radial-gradient(circle at top left,rgba(25,189,255,.14),transparent 35%),
+    linear-gradient(135deg,#0b1220,#101c32);
+}
+
+.hero-content{
+  width:min(850px,100%);
+}
+
+.profile{
+  width:180px;
+  height:180px;
+  object-fit:cover;
+  border-radius:50%;
+  border:6px solid #fff;
+  box-shadow:0 12px 35px rgba(0,0,0,.25);
+  animation:float 3s ease-in-out infinite;
+  background:#dfe8f8;
+}
+
+@keyframes float{
+  50%{
+    transform:translateY(-10px);
+  }
+}
+
+.hero h1{
+  margin:24px 0 8px;
+  font-size:clamp(38px,7vw,64px);
+  line-height:1.1;
+  color:#07152f;
+}
+
+body.dark .hero h1{
+  color:#fff;
+}
+
+.typing{
+  min-height:45px;
+  font-size:clamp(21px,4vw,30px);
+  font-weight:800;
+  color:#1260df;
+}
+
+body.dark .typing{
+  color:#66d8ff;
+}
+
+.hero-text{
+  margin-top:8px;
+  font-size:18px;
+  color:#526079;
+}
+
+body.dark .hero-text{
+  color:#c9d3e5;
+}
+
+.hero-actions{
+  margin-top:22px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+/* BUTTONS */
+.btn,
+.cv-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:12px 20px;
+  border:0;
+  border-radius:14px;
+  background:linear-gradient(135deg,#243fe8,#1479ff);
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+  box-shadow:0 10px 22px rgba(36,63,232,.22);
+  transition:transform .2s,box-shadow .2s;
+}
+
+.btn:hover,
+.cv-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 13px 28px rgba(36,63,232,.3);
+}
+
+.btn.secondary{
+  background:#07152f;
+}
+
+body.dark .btn.secondary{
+  background:#18253d;
+}
+
+/* BOXES */
+.box,
+.skills-box,
+.service-card,
+.project-card,
+.game-box,
+.tic-box,
+.contact-box{
+  background:#fff;
+  border:1px solid #dce5f3;
+  border-radius:24px;
+  box-shadow:0 12px 35px rgba(22,45,85,.10);
+}
+
+body.dark .box,
+body.dark .skills-box,
+body.dark .service-card,
+body.dark .project-card,
+body.dark .game-box,
+body.dark .tic-box,
+body.dark .contact-box{
+  background:#151f31;
+  border-color:#2a3a56;
+  color:#f5f7fb;
+}
+
+.box{
+  width:min(760px,100%);
+  margin:auto;
+  padding:38px;
+}
+
+.box p{
+  font-size:19px;
+  margin:10px 0;
+  color:#526079;
+}
+
+body.dark .box p{
+  color:#d1daea;
+}
+
+/* SKILLS */
+.skills-box{
+  width:min(760px,100%);
+  margin:auto;
+  padding:32px;
+  text-align:left;
+}
+
+.skill{
+  margin:22px 0;
+}
+
+.skill-head{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  font-weight:800;
+  margin-bottom:8px;
+}
+
+.skillbar{
+  height:17px;
+  border-radius:99px;
+  background:#e5ebf4;
+  overflow:hidden;
+}
+
+body.dark .skillbar{
+  background:#2d3b52;
+}
+
+.progress{
+  width:0;
+  height:100%;
+  border-radius:99px;
+  background:linear-gradient(90deg,#2455e6,#13c4ee);
+  transition:width 1.2s ease;
+}
+
+/* CARDS */
+.grid{
+  width:min(1050px,100%);
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:22px;
+}
+
+.service-card,
+.project-card{
+  padding:30px 22px;
+  transition:transform .25s,box-shadow .25s;
+}
+
+.service-card:hover,
+.project-card:hover{
+  transform:translateY(-7px);
+  box-shadow:0 18px 38px rgba(22,45,85,.16);
+}
+
+.icon{
+  font-size:46px;
+  margin-bottom:12px;
+}
+
+.service-card h3,
+.project-card h3{
+  color:#123ed0;
+  font-size:22px;
+  margin-bottom:9px;
+}
+
+body.dark .service-card h3,
+body.dark .project-card h3{
+  color:#66d8ff;
+}
+
+.service-card p,
+.project-card p{
+  color:#59657a;
+  font-size:16px;
+}
+
+body.dark .service-card p,
+body.dark .project-card p{
+  color:#ccd5e5;
+}
+
+/* CLOCK */
+.clock-box{
+  width:min(600px,100%);
+  margin:auto;
+  padding:35px 18px;
+  border-radius:28px;
+  background:#07152f;
+  color:#fff;
+  box-shadow:0 16px 40px rgba(7,21,47,.28);
+}
+
+#clock{
+  font-size:clamp(42px,9vw,72px);
+  font-weight:900;
+  letter-spacing:3px;
+  line-height:1.1;
+}
+
+#date{
+  margin-top:12px;
+  font-size:18px;
+  color:#dbe8ff;
+}
+
+/* CALCULATOR */
+.calculator{
+  width:min(380px,100%);
+  margin:auto;
+  padding:20px;
+  border-radius:25px;
+  background:#121a28;
+  box-shadow:0 16px 40px rgba(0,0,0,.18);
+}
+
+#display{
+  width:100%;
+  height:68px;
+  padding:10px 14px;
+  border:0;
+  outline:0;
+  border-radius:13px;
+  background:#fff;
+  color:#111827;
+  font-size:27px;
+  text-align:right;
+  margin-bottom:12px;
+}
+
+.calc-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+
+.calc-grid button{
+  min-height:58px;
+  border:0;
+  border-radius:13px;
+  background:#303b4d;
+  color:#fff;
+  font-weight:800;
+  font-size:19px;
+}
+
+.calc-grid button:hover{
+  filter:brightness(1.15);
+}
+
+.calc-grid .operator{
+  background:#2455e6;
+}
+
+.calc-grid .clear{
+  background:#d82d3f;
+}
+
+.calc-grid .equal{
+  background:#139b62;
+}
+
+/* NUMBER GAME */
+.game-box,
+.tic-box{
+  width:min(620px,100%);
+  margin:auto;
+  padding:35px 22px;
+}
+
+.game-box input{
+  width:min(300px,90%);
+  padding:14px;
+  border:2px solid #d5deed;
+  border-radius:12px;
+  outline:0;
+  text-align:center;
+  font-size:18px;
+  margin:10px 0;
+}
+
+body.dark .game-box input{
+  background:#0e1727;
+  color:#fff;
+  border-color:#344761;
+}
+
+.game-result,
+.tic-result{
+  min-height:34px;
+  margin-top:12px;
+  font-weight:800;
+  color:#123ed0;
+}
+
+body.dark .game-result,
+body.dark .tic-result{
+  color:#66d8ff;
+}
+
+/* TIC TAC TOE */
+.board{
+  width:min(340px,100%);
+  margin:22px auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+}
+
+.cell{
+  aspect-ratio:1;
+  border:2px solid #2455e6;
+  border-radius:14px;
+  background:#edf3ff;
+  color:#123ed0;
+  font-size:clamp(38px,10vw,58px);
+  font-weight:900;
+  margin:0;
+}
+
+body.dark .cell{
+  background:#0d1728;
+  color:#66d8ff;
+  border-color:#4c78ff;
+}
+
+/* CONTACT */
+.contact-box{
+  width:min(700px,100%);
+  margin:auto;
+  padding:34px;
+}
+
+.contact-box input,
+.contact-box textarea{
+  width:100%;
+  padding:14px;
+  margin:7px 0;
+  border:2px solid #d5deed;
+  border-radius:12px;
+  outline:0;
+  background:#fff;
+  color:#172033;
+  font-size:16px;
+}
+
+.contact-box textarea{
+  min-height:130px;
+  resize:vertical;
+}
+
+body.dark .contact-box input,
+body.dark .contact-box textarea{
+  background:#0e1727;
+  color:#fff;
+  border-color:#344761;
+}
+
+.contact-box input:focus,
+.contact-box textarea:focus{
+  border-color:#2455e6;
+}
+
+.form-result{
+  min-height:28px;
+  margin-top:8px;
+  font-weight:700;
+}
+
+.whatsapp{
+  display:inline-flex;
+  margin-top:12px;
+  padding:13px 20px;
+  border-radius:13px;
+  background:#16a05d;
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+}
+
+/* SOCIAL */
+.social{
+  width:min(800px,100%);
+  margin:auto;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.social a{
+  padding:12px 18px;
+  border-radius:13px;
+  background:#07152f;
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+}
+
+body.dark .social a{
+  background:#1c2a43;
+}
+
+/* FOOTER */
+footer{
+  padding:32px 18px;
+  background:#07152f;
+  color:#fff;
+}
+
+footer p{
+  color:#fff;
+  margin:5px 0;
+}
+
+/* TOAST */
+#toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translate(-50%,120px);
+  opacity:0;
+  z-index:9000;
+  max-width:min(90%,500px);
+  padding:13px 19px;
+  border-radius:13px;
+  background:#111827;
+  color:#fff;
+  box-shadow:0 12px 30px rgba(0,0,0,.25);
+  transition:.35s;
+}
+
+#toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+/* TOP BUTTON */
+#top{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:50px;
+  height:50px;
+  border:0;
+  border-radius:50%;
+  background:#2455e6;
+  color:#fff;
+  font-size:24px;
+  font-weight:900;
+  display:none;
+  z-index:4000;
+}
+
+/* MOBILE */
 @media(max-width:800px){
 
-    .navbar{
-        padding:18px 20px;
-    }
+  .navbar{
+    min-height:72px;
+    padding:10px 15px;
+  }
 
-    .logo{
-        font-size:40px;
-    }
+  .logo{
+    font-size:31px;
+  }
 
-    .menu-btn{
-        display:block;
-    }
+  .menu-btn{
+    display:block;
+  }
 
-    .menu{
-        position:absolute;
-        top:100%;
-        left:0;
-        width:100%;
-        background:#071126;
-        display:none;
-        flex-direction:column;
-        padding:20px;
-        gap:18px;
-    }
+  .navlinks{
+    display:none;
+    width:100%;
+    flex-direction:column;
+    padding:8px 0 10px;
+  }
 
-    .menu.show{
-        display:flex;
-    }
+  .navlinks.show{
+    display:flex;
+  }
 
-    section{
-        padding:70px 5%;
-    }
+  .navlinks a{
+    width:100%;
+    padding:11px;
+  }
 
-    .section-title{
-        font-size:38px;
-    }
+  .navbar{
+    flex-wrap:wrap;
+  }
 
-    .hero{
-        min-height:650px;
-    }
+  section{
+    padding:65px 15px;
+  }
 
-    .hero h1{
-        font-size:48px;
-    }
+  .section-title{
+    font-size:34px;
+  }
 
-    .hero h2{
-        font-size:27px;
-    }
+  .box,
+  .skills-box,
+  .contact-box,
+  .game-box,
+  .tic-box{
+    padding:26px 18px;
+  }
 
-    .skills-container{
-        grid-template-columns:1fr;
-    }
+  .profile{
+    width:145px;
+    height:145px;
+  }
 
-    .cards{
-        grid-template-columns:1fr;
-    }
+  .hero{
+    min-height:calc(100vh - 72px);
+  }
 
-    .gallery{
-        grid-template-columns:1fr;
-    }
+  .hero-text{
+    font-size:17px;
+  }
 
-    .box{
-        padding:35px 25px;
-    }
-
-    .about-text{
-        font-size:22px;
-    }
-
-    #clock{
-        font-size:42px;
-    }
-
-    .clock-box{
-        padding:40px 15px;
-    }
+  .btn,
+  .cv-btn{
+    width:min(300px,100%);
+  }
 }
 
-@media(max-width:450px){
+@media(max-width:420px){
 
-    .logo{
-        font-size:34px;
-    }
+  .logo{
+    font-size:28px;
+  }
 
-    .menu-btn{
-        font-size:18px;
-        padding:12px 20px;
-    }
+  .menu-btn{
+    padding:11px 16px;
+  }
 
-    .hero h1{
-        font-size:40px;
-    }
+  .section-title{
+    font-size:30px;
+  }
 
-    .hero h2{
-        font-size:23px;
-    }
+  .clock-box{
+    padding:30px 10px;
+  }
 
-    .profile{
-        width:150px;
-        height:150px;
-    }
-
-    .section-title{
-        font-size:32px;
-    }
-
-    #clock{
-        font-size:34px;
-    }
-
-    .tic-cell{
-        height:85px;
-    }
+  #date{
+    font-size:16px;
+  }
 }
 
+@media(prefers-reduced-motion:reduce){
+
+  html{
+    scroll-behavior:auto;
+  }
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
+<!-- LOADER -->
+<div id="loader">
+  <div class="spinner"></div>
+  <p>Loading Subhan's Website...</p>
+</div>
 
+<!-- NAVIGATION -->
 <nav>
-<div class="navbar">
+  <div class="navbar">
 
-<div class="logo">Subhan</div>
+    <div class="logo">Subhan</div>
 
-<button class="menu-btn" onclick="menuToggle()">
-☰ Menu
-</button>
+    <button
+      class="menu-btn"
+      type="button"
+      onclick="menuToggle()"
+      aria-label="Open menu"
+      aria-expanded="false">
+      ☰ Menu
+    </button>
 
-<div class="menu" id="menu">
+    <div class="navlinks" id="navlinks">
 
-<a href="#home" onclick="closeMenu()">Home</a>
-<a href="#about" onclick="closeMenu()">About</a>
-<a href="#skills" onclick="closeMenu()">Skills</a>
-<a href="#services" onclick="closeMenu()">Services</a>
-<a href="#projects" onclick="closeMenu()">Projects</a>
-<a href="#gallery" onclick="closeMenu()">Gallery</a>
-<a href="#achievements" onclick="closeMenu()">Achievements</a>
-<a href="#clockSection" onclick="closeMenu()">Clock</a>
-<a href="#calculator" onclick="closeMenu()">Calculator</a>
-<a href="#game" onclick="closeMenu()">Game</a>
-<a href="#tic" onclick="closeMenu()">Tic-Tac-Toe</a>
-<a href="#contact" onclick="closeMenu()">Contact</a>
+      <a href="#home" onclick="closeMenu()">Home</a>
+      <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#skills" onclick="closeMenu()">Skills</a>
+      <a href="#services" onclick="closeMenu()">Services</a>
+      <a href="#projects" onclick="closeMenu()">Projects</a>
+      <a href="#clockSection" onclick="closeMenu()">Clock</a>
+      <a href="#calculator" onclick="closeMenu()">Calculator</a>
+      <a href="#game" onclick="closeMenu()">Game</a>
+      <a href="#tictactoe" onclick="closeMenu()">Tic-Tac-Toe</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
 
-</div>
+    </div>
 
-</div>
+  </div>
 </nav>
 
-
-<!-- =====================================================
-     HOME
-===================================================== -->
-
+<!-- HOME -->
 <section id="home" class="hero">
 
-<img
-src="AA.jpg"
-alt="Subhan Photo"
-class="profile"
-onerror="this.style.display='none';"
->
+  <div class="hero-content">
 
-<h1>Welcome to My Website</h1>
+    <img
+      src="AA.jpg"
+      class="profile"
+      alt="Subhan profile photo"
+      onerror="this.style.display='none';document.getElementById('photoNote').style.display='block';">
 
-<h2 id="typing">I am a Web Developer.</h2>
+    <p
+      id="photoNote"
+      style="display:none;margin:10px 0;color:#d82d3f;font-weight:700">
+      Photo not found. Put <b>AA.jpg</b> beside index.html.
+    </p>
 
-<p>My name is Subhan.</p>
+    <h1>Welcome to My Website</h1>
 
-<p>I am learning Web Development.</p>
+    <div
+      class="typing"
+      id="typing"
+      aria-live="polite">
+    </div>
 
-<div class="hero-buttons">
+    <p class="hero-text">My name is Subhan.</p>
+    <p class="hero-text">I am learning Web Development.</p>
 
-<button class="btn" onclick="welcome()">
-👋 Welcome
-</button>
+    <div class="hero-actions">
 
-<button class="btn" onclick="darkMode()">
-🌙 Dark Mode
-</button>
+      <button
+        class="btn"
+        type="button"
+        onclick="welcome()">
+        👋 Click Me
+      </button>
 
-<a
-href="#"
-class="btn"
-onclick="downloadCV();return false;"
->
-📄 Download CV
-</a>
+      <button
+        class="btn secondary"
+        type="button"
+        onclick="darkMode()">
+        🌙 Dark Mode
+      </button>
 
-</div>
+      <button
+        class="cv-btn"
+        type="button"
+        onclick="downloadCV()">
+        📄 Download CV
+      </button>
+
+    </div>
+
+  </div>
 
 </section>
 
-
-<!-- =====================================================
-     ABOUT
-===================================================== -->
-
+<!-- ABOUT -->
 <section id="about">
 
-<h2 class="section-title">
-👨‍💻 About Me
-</h2>
+  <h2 class="section-title">👨‍💻 About Me</h2>
+  <div class="section-line"></div>
 
-<div class="line"></div>
+  <div class="box">
 
-<div class="box about-text">
+    <p>
+      I am a student and I am learning HTML, CSS and JavaScript.
+    </p>
 
-<p>
-I am a student and I am learning HTML, CSS and JavaScript.
-</p>
+    <p>
+      My goal is to become a professional Web Developer.
+    </p>
 
-<p>
-My goal is to become a professional Web Developer.
-</p>
+    <p>
+      I enjoy creating modern, responsive and useful websites.
+    </p>
 
-<p>
-I enjoy creating modern, responsive and useful websites.
-</p>
-
-</div>
+  </div>
 
 </section>
 
-
-<!-- =====================================================
-     SKILLS
-===================================================== -->
-
+<!-- SKILLS -->
 <section id="skills">
 
-<h2 class="section-title">
-🛠️ My Skills
-</h2>
+  <h2 class="section-title">📊 My Skills</h2>
+  <div class="section-line"></div>
 
-<div class="line"></div>
+  <div class="skills-box">
 
-<div class="skills-container">
+    <div class="skill">
 
-<div class="skill-box">
+      <div class="skill-head">
+        <span>HTML</span>
+        <span>90%</span>
+      </div>
 
-<div class="skill-header">
-<span>HTML</span>
-<span>90%</span>
-</div>
+      <div class="skillbar">
+        <div
+          class="progress"
+          data-width="90%">
+        </div>
+      </div>
 
-<div class="progress">
-<span data-width="90%"></span>
-</div>
+    </div>
 
-</div>
+    <div class="skill">
 
+      <div class="skill-head">
+        <span>CSS</span>
+        <span>80%</span>
+      </div>
 
-<div class="skill-box">
+      <div class="skillbar">
+        <div
+          class="progress"
+          data-width="80%">
+        </div>
+      </div>
 
-<div class="skill-header">
-<span>CSS</span>
-<span>80%</span>
-</div>
+    </div>
 
-<div class="progress">
-<span data-width="80%"></span>
-</div>
+    <div class="skill">
 
-</div>
+      <div class="skill-head">
+        <span>JavaScript</span>
+        <span>70%</span>
+      </div>
 
+      <div class="skillbar">
+        <div
+          class="progress"
+          data-width="70%">
+        </div>
+      </div>
 
-<div class="skill-box">
+    </div>
 
-<div class="skill-header">
-<span>JavaScript</span>
-<span>70%</span>
-</div>
+    <div class="skill">
 
-<div class="progress">
-<span data-width="70%"></span>
-</div>
+      <div class="skill-head">
+        <span>Web Development</span>
+        <span>75%</span>
+      </div>
 
-</div>
+      <div class="skillbar">
+        <div
+          class="progress"
+          data-width="75%">
+        </div>
+      </div>
 
+    </div>
 
-<div class="skill-box">
-
-<div class="skill-header">
-<span>Web Development</span>
-<span>75%</span>
-</div>
-
-<div class="progress">
-<span data-width="75%"></span>
-</div>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
-
-<!-- =====================================================
-     SERVICES
-===================================================== -->
-
+<!-- SERVICES -->
 <section id="services">
 
-<h2 class="section-title">
-💼 Services
-</h2>
+  <h2 class="section-title">🛠️ My Services</h2>
+  <div class="section-line"></div>
 
-<div class="line"></div>
+  <div class="grid">
 
-<div class="cards">
+    <div class="service-card">
+      <div class="icon">🌐</div>
+      <h3>Website Development</h3>
+      <p>Simple, modern and responsive websites.</p>
+    </div>
 
-<div class="card">
-<div class="icon">🌐</div>
-<h3>Website Design</h3>
-<p>
-Modern and responsive website design using HTML and CSS.
-</p>
-</div>
+    <div class="service-card">
+      <div class="icon">🎨</div>
+      <h3>Website Design</h3>
+      <p>Clean designs for mobile, tablet and desktop.</p>
+    </div>
 
+    <div class="service-card">
+      <div class="icon">💻</div>
+      <h3>HTML &amp; CSS</h3>
+      <p>Modern web pages using HTML and CSS.</p>
+    </div>
 
-<div class="card">
-<div class="icon">💻</div>
-<h3>Frontend Development</h3>
-<p>
-Interactive frontend websites using HTML, CSS and JavaScript.
-</p>
-</div>
+    <div class="service-card">
+      <div class="icon">⚡</div>
+      <h3>JavaScript</h3>
+      <p>Interactive buttons, forms, calculators and features.</p>
+    </div>
 
+    <div class="service-card">
+      <div class="icon">📱</div>
+      <h3>Responsive Website</h3>
+      <p>Layouts that work properly on phones and computers.</p>
+    </div>
 
-<div class="card">
-<div class="icon">📱</div>
-<h3>Responsive Design</h3>
-<p>
-Websites that work properly on mobile, tablet and computer.
-</p>
-</div>
+    <div class="service-card">
+      <div class="icon">🔧</div>
+      <h3>Website Updates</h3>
+      <p>Adding sections, changing text and improving design.</p>
+    </div>
 
-
-<div class="card">
-<div class="icon">⚡</div>
-<h3>JavaScript</h3>
-<p>
-Interactive buttons, games, calculators and useful web features.
-</p>
-</div>
-
-
-<div class="card">
-<div class="icon">🎨</div>
-<h3>UI Design</h3>
-<p>
-Clean, simple and attractive user interfaces.
-</p>
-</div>
-
-
-<div class="card">
-<div class="icon">🔧</div>
-<h3>Website Improvement</h3>
-<p>
-Fixing and improving existing HTML, CSS and JavaScript websites.
-</p>
-</div>
-
-</div>
+  </div>
 
 </section>
 
-
-<!-- =====================================================
-     PROJECTS
-===================================================== -->
-
+<!-- PROJECTS -->
 <section id="projects">
 
-<h2 class="section-title">
-🚀 My Projects
-</h2>
+  <h2 class="section-title">🖼️ My Projects</h2>
+  <div class="section-line"></div>
 
-<div class="line"></div>
+  <div class="grid">
 
-<div class="cards">
+    <div class="project-card">
+      <div class="icon">🌐</div>
+      <h3>Personal Website</h3>
+      <p>My complete personal portfolio website.</p>
+    </div>
 
-<div class="card project">
-<div class="icon">🌐</div>
-<h3>Personal Website</h3>
-<p>
-My complete personal portfolio website.
-</p>
-</div>
+    <div class="project-card">
+      <div class="icon">🧮</div>
+      <h3>Calculator</h3>
+      <p>A working calculator with keyboard support.</p>
+    </div>
 
+    <div class="project-card">
+      <div class="icon">🎮</div>
+      <h3>Number Game</h3>
+      <p>Guess the hidden number from 1 to 100.</p>
+    </div>
 
-<div class="card project">
-<div class="icon">🧮</div>
-<h3>Calculator</h3>
-<p>
-A working JavaScript calculator.
-</p>
-</div>
+    <div class="project-card">
+      <div class="icon">⭕❌</div>
+      <h3>Tic-Tac-Toe</h3>
+      <p>Two-player Tic-Tac-Toe game.</p>
+    </div>
 
+    <div class="project-card">
+      <div class="icon">⏰</div>
+      <h3>Live Clock</h3>
+      <p>Real-time digital clock and date.</p>
+    </div>
 
-<div class="card project">
-<div class="icon">🎯</div>
-<h3>Number Guessing Game</h3>
-<p>
-Guess a random number between 1 and 100.
-</p>
-</div>
+    <div class="project-card">
+      <div class="icon">📱</div>
+      <h3>WhatsApp Contact</h3>
+      <p>
+        Contact form that opens WhatsApp with the visitor's message.
+      </p>
+    </div>
 
-
-<div class="card project">
-<div class="icon">❌⭕</div>
-<h3>Tic-Tac-Toe</h3>
-<p>
-Two-player Tic-Tac-Toe game.
-</p>
-</div>
-
-
-<div class="card project">
-<div class="icon">⏰</div>
-<h3>Live Clock</h3>
-<p>
-Real-time digital clock and date.
-</p>
-</div>
-
-
-<div class="card project">
-<div class="icon">📱</div>
-<h3>Contact</h3>
-<p>
-WhatsApp contact form for visitors.
-</p>
-</div>
-
-</div>
+  </div>
 
 </section>
 
-
-<!-- =====================================================
-     GALLERY
-===================================================== -->
-
-<section id="gallery">
-
-<h2 class="section-title">
-🖼️ Gallery
-</h2>
-
-<div class="line"></div>
-
-<div class="gallery">
-
-<div class="gallery-box">
-<img
-src="AA.jpg"
-alt="Subhan"
-onerror="this.style.display='none';this.parentElement.innerHTML='👨‍💻';"
->
-</div>
-
-<div class="gallery-box">
-💻
-</div>
-
-<div class="gallery-box">
-🌐
-</div>
-
-<div class="gallery-box">
-🚀
-</div>
-
-<div class="gallery-box">
-🧮
-</div>
-
-<div class="gallery-box">
-🎯
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     ACHIEVEMENTS
-===================================================== -->
-
-<section id="achievements">
-
-<h2 class="section-title">
-🏆 Achievements
-</h2>
-
-<div class="line"></div>
-
-<div class="cards">
-
-<div class="card achievement">
-<h3>HTML Learning</h3>
-<p>
-Learning HTML structure and creating web pages.
-</p>
-</div>
-
-<div class="card achievement">
-<h3>CSS Learning</h3>
-<p>
-Learning responsive layouts, colors and modern design.
-</p>
-</div>
-
-<div class="card achievement">
-<h3>JavaScript Learning</h3>
-<p>
-Learning JavaScript logic and interactive websites.
-</p>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     CLOCK
-===================================================== -->
-
+<!-- CLOCK -->
 <section id="clockSection">
 
-<h2 class="section-title">
-⏰ Live Digital Clock
-</h2>
+  <h2 class="section-title">⏰ Live Digital Clock</h2>
+  <div class="section-line"></div>
 
-<div class="line"></div>
+  <div class="clock-box">
 
-<div class="clock-box">
+    <div id="clock">
+      00:00:00
+    </div>
 
-<div id="clock">
-00:00:00
-</div>
+    <div id="date">
+      Loading date...
+    </div>
 
-<div id="date">
-Loading date...
-</div>
-
-</div>
+  </div>
 
 </section>
 
+<!-- CALCULATOR -->
+<section id="calculator">
 
-<!-- =====================================================
-     CALCULATOR
-=====================================
+  <h2 class="section-title">🧮 Calculator</h2>
+  <div class="section-line"></div>
+
+  <div class="calculator">
+
+    <input
+      id="display"
+      type="text"
+      inputmode="none"
+      autocomplete="off"
+      aria-label="Calculator display"
+      readonly>
+
+    <div class="calc-grid">
+
+      <button
+        class="clear"
+        type="button"
+        onclick="clearCalc()">
+        C
+      </button>
+
+      <button
+        type="button"
+        onclick="delCalc()">
+        ⌫
+      </button>
+
+      <button
+        class="operator"
+        type="button"
+        onclick="calcAdd('(')">
+        (
+      </button>
+
+      <button
+        class="operator"
+        type="button"
+        onclick="calcAdd(')')">
+        )
+      </button>
+
+      <button
+        type="button"
+        onclick="calcAdd('7')">
+        7
+      </button>
+
+      <button
+        type="button"
+        onclick="calcAdd('8')">
+        8
+      </button>
+
+      <button
+        type="button"
+        onclick="calcAdd('9')">
+        9
+      </button>
+
+      <button
+        class="operator"
+        type="button"
+        onclick="calcAdd('/')">
+        ÷
+      </button>
+
+      <button
+        type="button"
+        onclick="calcAdd('4')">
+        4
+      </button>
+
+      <button
+        type="button"
+        onclick="calcAdd('5')">
+        5
+      </button>
+
+      <button
+        type="button"
+        onclick="calcAdd('6')">
+        6
+      </button>
+
+      <button
+        class="operator"
+        type="button"
+        onclick="calcAdd('*')">
+        ×
+      </button>
+
+      <button
+        type="button"
+        onclick="calcAdd('1')">
+        1
+      </button>
+
+      <button
+        type="button"
+        onclick="calcAdd('2')">
+        2
+      </button>
+
+      <button
+        type="button"
+        onclick="calcAdd('3')">
+        3
+      </button>
+
+      <button
+        class="operator"
+        type="button"
+        onclick="calcAdd('-')">
+        −
+      </button>
+
+      <button
+        type="button"
+        onclick="calcAdd('0')">
+        0
+      </button>
+
+      <button
+        type="button"
+        onclic
